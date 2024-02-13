@@ -1,0 +1,97 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .sub-container {
+    box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    padding: 20px;
+  }
+  
+  form {
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 19px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  input,
+  select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    line-height: 20px;
+    font-size: 17px;
+  }
+  
+  input[type="file"] {
+    font-size: 17px;
+    border: 1px solid black;
+  }
+  
+  .amenity-container {
+    display: flex;
+  }
+  
+  input[type="checkbox"] {
+    width: auto;
+    margin-right: 5px;
+  }
+  
+  label[for="checkbox"] {
+    margin-bottom: 0px;
+    color: #000 !important;
+  }
+  
+  button {
+    padding: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    /* width: 80px; */
+    line-height: 20px;
+    border-radius: 7px;
+    font-size: 17px;
+  }
+  
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #000;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  
+  /* Styles for the error messages */
+  .form-group div,
+  .error-message {
+    color: red;
+    margin-top: 5px;
+    font-size: 20px;
+  }
+  
+  .button-submit {
+    margin-top: 20px;
+    text-align: center;
+  }
+  

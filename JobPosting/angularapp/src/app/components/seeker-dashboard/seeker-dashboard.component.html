@@ -1,0 +1,75 @@
+<div
+  id="vacationRentalHomeBody"
+  [ngClass]="{ blur: showLogoutPopup }"
+>
+  <!-- <div class="main-head"> -->
+  <div class="top-head">
+    <button class="logout-btn-grad" (click)="showLogoutPopup = true">
+      Logout
+    </button>
+  </div>
+  <h1>All Jobs</h1>
+
+  <!-- </div> -->
+  <div class="search-sort-container">
+    <input
+      type="text"
+      [(ngModel)]="searchText"
+      (input)="searchJobs()"
+      placeholder="Search by job title..."
+    />
+    <div>
+    <label for="sort">Sort by Start Date:</label>
+    <select
+      [(ngModel)]="sortValue"
+      (change)="sortJobs()"
+      class="sort-select">
+        <option value="">Select</option>
+      <option value="1">Date Ascending</option>
+      <option value="-1">Date Descending</option>    
+    </select>
+    </div>
+  </div>
+
+  <div class="grid-container">
+    <div class="grid-item" *ngFor="let job of jobs">
+      <img
+        src="{{ job.coverImage }}"
+        alt="Event Image"
+        class="vacationRental-image"
+      />
+      <div (click)="viewInfo(job)">
+        <h2>{{ job.title }}</h2>
+        <p>{{ job.description }}</p>
+        <p>Start Date: {{ job.startDate | date:'yyyy-MM-dd'}}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="showLogoutPopup" class="logout-popup">
+  <p>Are you sure you want to logout?</p>
+  <button (click)="logout(); showLogoutPopup = false" id="logout-btn">
+    Yes, Logout
+  </button>
+  <button (click)="showLogoutPopup = false">Cancel</button>
+</div>
+<div class="modal" [ngStyle]="{ display: showModal ? 'block' : 'none' }">
+  <div class="modal-content">
+    <span class="close" (click)="toggleModal()">&times;</span>
+    <h2>Details</h2>
+    <div class="image-container">
+      <p><strong>Description:</strong> {{ selectedItem.description }}</p>
+      <p><strong>Category:</strong> {{ selectedItem.category }}</p>
+      <p><strong>Location:</strong> {{ selectedItem.location }}</p>
+      <p><strong>Start Date:</strong> {{ selectedItem.startDate | date:'yyyy-MM-dd'}}</p>
+      <p><strong>End Date:</strong> {{ selectedItem.endDate | date:'yyyy-MM-dd'}}</p>
+      <p>
+        <strong>Posted by:</strong> {{ selectedItem?.firstName }}
+        {{ selectedItem?.lastName }}
+      </p>
+      <p><strong>Contact Email: </strong>{{ selectedItem.email }}</p>
+      <p><strong>Contact Phone:</strong> {{ selectedItem.mobileNumber }}</p>
+    </div>
+  </div>
+</div>
