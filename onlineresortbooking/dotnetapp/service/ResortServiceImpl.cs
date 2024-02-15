@@ -18,7 +18,7 @@ namespace dotnetapp.Service
         {
             return await _repository.GetAllResortsAsync();
         }
-
+//AddResortAsync
         public async Task<Resort> AddResortAsync(Resort resort)
         {
             return await _repository.AddResortAsync(resort);

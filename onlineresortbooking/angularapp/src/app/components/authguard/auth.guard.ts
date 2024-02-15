@@ -19,13 +19,13 @@ export class AuthGuard implements CanActivate {
     if (user) {
       console.log(user);
       
-      if (this.isAdminRoute(url) && user != 'ADMIN') {
+      if (this.isAdminRoute(url) && user != 'Admin') {
         console.log("customer entering in admin route");
         this.router.navigate(['/error']);
         return false;
       }
 
-      if (this.isCustomerRoute(url) && user != 'CUSTOMER') {
+      if (this.isCustomerRoute(url) && user != 'Customer') {
         console.log("admin entering in customer route");
         this.router.navigate(['/error']);
         return false;

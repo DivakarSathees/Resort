@@ -16,7 +16,6 @@ export class AdminDashboardComponent implements OnInit {
       if (this.isLoggedIn) {
         this.isAdmin = this.authService.isAdmin();
         console.log(this.isAdmin);
-
       } else {
         this.isAdmin = false;
       }

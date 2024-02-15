@@ -11,13 +11,17 @@ import { AdminViewBoatComponent } from './components/admin-view-boat/admin-view-
 import { CustomerViewBoatComponent } from './components/customer-view-boat/customer-view-boat.component';
 import { CustomerViewBookingComponent } from './components/customer-view-booking/customer-view-booking.component';
 import { AddBookingComponent } from './components/add-booking/add-booking.component';
+import { AddResortComponent } from './components/add-resort/add-resort.component';
+import { AdminViewResortComponent } from './components/admin-view-resort/admin-view-resort.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: RegistrationComponent },
   { path: 'admin/add/boat', component: AddBoatComponent, canActivate: [AuthGuard]},
+  { path: 'admin/add/resort', component: AddResortComponent, canActivate: [AuthGuard]},
   { path: 'admin/view/boat', component: AdminViewBoatComponent, canActivate: [AuthGuard]},
+  { path: 'admin/view/resort', component: AdminViewResortComponent, canActivate: [AuthGuard]},
   { path: 'admin/view/bookings', component: AdminViewBookingComponent, canActivate: [AuthGuard]},
   { path: 'customer/view/boat', component: CustomerViewBoatComponent, canActivate: [AuthGuard]},
   { path: 'customer/add/booking', component: AddBookingComponent, canActivate: [AuthGuard]},

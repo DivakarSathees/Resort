@@ -18,6 +18,11 @@ import { AdminViewBookingComponent } from './components/admin-view-booking/admin
 import { CustomerViewBookingComponent } from './components/customer-view-booking/customer-view-booking.component';
 import { CustomerViewBoatComponent } from './components/customer-view-boat/customer-view-boat.component';
 import { AddBookingComponent } from './components/add-booking/add-booking.component';
+import { AddResortComponent } from './components/add-resort/add-resort.component';
+import { AddReviewComponent } from './components/add-review/add-review.component';
+import { AdminViewReviewComponent } from './components/admin-view-review/admin-view-review.component';
+import { AdminViewResortComponent } from './components/admin-view-resort/admin-view-resort.component';
+import { CustomerViewResortComponent } from './components/customer-view-resort/customer-view-resort.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +39,12 @@ import { AddBookingComponent } from './components/add-booking/add-booking.compon
     AdminViewBookingComponent,
     CustomerViewBookingComponent,
     CustomerViewBoatComponent,
-    AddBookingComponent
+    AddBookingComponent,
+    AddResortComponent,
+    AddReviewComponent,
+    AdminViewReviewComponent,
+    AdminViewResortComponent,
+    CustomerViewResortComponent
   ],
   imports: [
     BrowserModule,

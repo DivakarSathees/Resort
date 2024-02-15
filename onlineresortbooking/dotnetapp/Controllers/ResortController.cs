@@ -7,31 +7,31 @@ using dotnetapp.Service;
 using Microsoft.AspNetCore.Mvc;
 //using Microsoft.AspNetCore.Authorization.Roles;
 using Microsoft.AspNetCore.Authorization;
-
-
+ 
+ 
 namespace dotnetapp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Roles = "Admin")]
-
+  [Authorize(Roles = "Admin")]
+ 
     public class ResortController : ControllerBase
     {
         private readonly ResortService _resortService;
-
+ 
         public ResortController(ResortService resortService)
         {
             _resortService = resortService;
         }
-        
-        [Authorize(Roles = "Customer,Admin")]
+       
+      [Authorize(Roles = "Customer,Admin")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Resort>>> Get()
         {
             var resorts = await _resortService.GetAllResortsAsync();
             return Ok(resorts);
         }
-
+ 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] Resort resort)
         {
@@ -39,56 +39,61 @@ namespace dotnetapp.Controllers
             {
                 if (resort == null)
                     return BadRequest("Resort data is null");
-
+ 
                 resort.Bookings = null;
-
+ 
                 var newResort = await _resortService.AddResortAsync(resort);
                 return CreatedAtAction(nameof(Get), new { id = newResort.ResortId }, newResort);
             }
             catch (Exception ex)
             {
-                return StatusCode(500, "Internal server error");
+                // return StatusCode(500, "Internal server error");
+                return StatusCode(500, ex);
+ 
+ 
             }
         }
-
-        [HttpPut("{ResortId}")]
-        public async Task<IActionResult> Put(long id, [FromBody] Resort resort)
+ 
+    [HttpPut("{ResortId}")]
+    public async Task<IActionResult> Put(long ResortId, [FromBody] Resort resort) // Use the same parameter name as in the route
+    {
+        try
         {
-            try
+            if (resort == null || resort.ResortId != ResortId)
+                return BadRequest("Invalid resort data");
+            var updatedResort = await _resortService.UpdateResortAsync(ResortId, resort);
+            if (updatedResort == null)
             {
-                if (resort == null || resort.ResortId != id)
-                    return BadRequest("Invalid resort data");
-
-                var updatedResort = await _resortService.UpdateResortAsync(id, resort);
-                if (updatedResort == null)
-                {
-                    return NotFound();
-                }
-                return Ok(updatedResort);
+                return NotFound();
             }
-            catch (Exception ex)
-            {
-                // Log the exception
-                return StatusCode(500, "Internal server error");
-            }
+ 
+            return Ok(updatedResort);
         }
-
-        [HttpDelete("{ResortId}")]
-        public async Task<IActionResult> Delete(long id)
+        catch (Exception ex)
         {
-            try
-            {
-                var deletedResort = await _resortService.DeleteResortAsync(id);
-                if (deletedResort == null)
-                {
-                    return NotFound();
-                }
-                return Ok(deletedResort);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Internal server error");
-            }
+            return StatusCode(500, "Internal server error");
         }
+    }
+ 
+ 
+ 
+    [HttpDelete("{ResortId}")]
+    public async Task<IActionResult> Delete(long ResortId) // Use the same parameter name as in the route
+    {
+        try
+        {
+            var deletedResort = await _resortService.DeleteResortAsync(ResortId);
+            if (deletedResort == null)
+            {
+                return NotFound();
+            }
+            return Ok(deletedResort);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, "Internal server error");
+        }
+    }
+ 
     }
 }

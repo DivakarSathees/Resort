@@ -12,7 +12,9 @@ export class AuthService {
   public currentUser: Observable<string | null>;
   public apiUrl = apiUrl; // Replace with your Spring Boot backend URL
   private userRoleSubject = new BehaviorSubject<string>('');
+  private userIdSubject = new BehaviorSubject<string>('');
   userRole$: Observable<string> = this.userRoleSubject.asObservable();
+  userId$: Observable<string> = this.userIdSubject.asObservable();
   private isAuthenticatedSubject: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.isAuthenticated());
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
@@ -40,18 +42,30 @@ export class AuthService {
       .pipe(
         tap(response => {
           console.log(response.token);
+          localStorage.setItem('token',response.token)
+          const decodedToken = this.decodeToken(response.token);
 
-          // Store the token in localStorage or a more secure storage method
-          localStorage.setItem('token', response.token);
-          this.userRoleSubject.next(response.role);
-          this.isAuthenticatedSubject.next(true);
+          if (decodedToken) {
+            localStorage.setItem('userId', decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']);
+            localStorage.setItem('userRole', decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']);
+            localStorage.setItem('currentUser', decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress']);
+            console.log(localStorage.getItem('userRole'))
+            // Update BehaviorSubjects
+            this.userRoleSubject.next(decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']);
+            this.userIdSubject.next(decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']);
+            this.isAuthenticatedSubject.next(true);
+          } else {
+            console.error('Unable to decode token or missing claims');
+          }
         })
       );
   }
 
   logout(): void {
-    // Remove the token from storage upon logout
+    // Remove the token, role, and user ID from storage upon logout
     localStorage.removeItem('token');
+    localStorage.removeItem('userRole');
+    localStorage.removeItem('userId');
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
@@ -69,7 +83,7 @@ export class AuthService {
     if (token) {
       const decodedToken = this.decodeToken(token);
       console.log("decodedToken", decodedToken);
-      return decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === 'ADMIN';
+      return decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === 'Admin';
     }
     return false;
   }
@@ -78,7 +92,7 @@ export class AuthService {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedToken = this.decodeToken(token);
-      return decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === 'CUSTOMER';
+      return decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === 'Customer';
     }
     return false;
   }
@@ -95,6 +109,7 @@ export class AuthService {
   private storeUserData(user: any): void {
     localStorage.setItem('token', user.token);
     localStorage.setItem('userRole', user.role);
+    localStorage.setItem('userId', user.userId);
   }
 
   private decodeToken(token: string): any {
