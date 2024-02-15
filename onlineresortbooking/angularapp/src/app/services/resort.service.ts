@@ -29,7 +29,7 @@ export class ResortService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}` // Assuming your token is a bearer token, replace it accordingly
     });
-    return this.http.get(`${this.apiUrl}/api/resort`, { headers });
+    return this.http.get(`${this.apiUrl}/api/Resort`, { headers });
   }
 
   // updateResort(resortDetails: any) {
