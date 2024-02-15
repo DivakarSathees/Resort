@@ -10,7 +10,7 @@ import { ResortService } from 'src/app/services/resort.service';
 })
 export class AdminViewResortComponent implements OnInit {
   showDeletePopup = false;
-  selectedResort: Resort;
+  selectedResort: Resort ;
   selectedItem: any = {};
   isEditing = false;
   resorts: any[] = [];
@@ -19,7 +19,6 @@ export class AdminViewResortComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllResorts();
-    this.selectedResort = {};
   }
 
   getAllResorts() {
