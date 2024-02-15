@@ -4,7 +4,7 @@ using dotnetapp.Models;
 using dotnetapp.Service;
 using System.Threading.Tasks;
 
-[Route("api/[controller]")]
+[Route("/api/")]
 [ApiController]
 public class UserController : ControllerBase
 {
@@ -46,7 +46,7 @@ public class UserController : ControllerBase
 
         var token = await _userService.GenerateJwtTokenAsync(user);
         if (token == null)
-        {
+        {   
             return StatusCode(StatusCodes.Status500InternalServerError, "Failed to generate JWT token.");
         }
 

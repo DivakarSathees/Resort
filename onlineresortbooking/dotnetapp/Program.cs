@@ -1,5 +1,3 @@
-// Program.cs
-
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -16,6 +14,17 @@ using dotnetapp.Service;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowOrigin",
+        builder =>
+        {
+            builder.WithOrigins("https://8081-fcebccfce309511144aaeaaecbccfdbone.premiumproject.examly.io")
+                   .AllowAnyHeader()
+                   .AllowAnyMethod();
+        });
+});
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -56,40 +65,13 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseRouting();
+
+// Apply CORS policy
+app.UseCors("AllowOrigin");
+
 app.UseAuthentication();
 app.UseAuthorization();
-
-
-// // Seed roles (if needed)
-// using (var scope = app.Services.CreateScope())
-// {
-//     var serviceProvider = scope.ServiceProvider;
-//     var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-
-//     // Define roles to be seeded
-//     var roles = new[] { "Admin", "Customer" };
-
-//     foreach (var role in roles)
-//     {
-//         var roleExists = await roleManager.RoleExistsAsync(role);
-//         if (!roleExists)
-//         {
-//             // Create the role
-//             var newRole = new IdentityRole(role);
-//             var result = await roleManager.CreateAsync(newRole);
-
-//             if (!result.Succeeded)
-//             {
-//                 // Handle error if role creation fails
-//                 foreach (var error in result.Errors)
-//                 {
-//                     // Log or handle the error appropriately
-//                     Console.WriteLine($"Error creating role {role}: {error.Description}");
-//                 }
-//             }
-//         }
-//     }
-// }
 
 app.MapControllers();
 app.Run();

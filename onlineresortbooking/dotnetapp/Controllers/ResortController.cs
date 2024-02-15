@@ -51,7 +51,7 @@ namespace dotnetapp.Controllers
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("{ResortId}")]
         public async Task<IActionResult> Put(long id, [FromBody] Resort resort)
         {
             try
@@ -73,7 +73,7 @@ namespace dotnetapp.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{ResortId}")]
         public async Task<IActionResult> Delete(long id)
         {
             try

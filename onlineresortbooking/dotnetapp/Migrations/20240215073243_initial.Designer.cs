@@ -12,8 +12,8 @@ using dotnetapp.Models;
 namespace dotnetapp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240213080500_second migration")]
-    partial class secondmigration
+    [Migration("20240215073243_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,8 +42,12 @@ namespace dotnetapp.Migrations
                     b.Property<int>("NoOfPersons")
                         .HasColumnType("int");
 
-                    b.Property<long>("ResortId")
+                    b.Property<long?>("ResortId")
                         .HasColumnType("bigint");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("ToDate")
                         .HasColumnType("datetime2");
@@ -51,7 +55,7 @@ namespace dotnetapp.Migrations
                     b.Property<double>("TotalPrice")
                         .HasColumnType("float");
 
-                    b.Property<long>("UserId")
+                    b.Property<long?>("UserId")
                         .HasColumnType("bigint");
 
                     b.HasKey("BookingId");
@@ -171,15 +175,11 @@ namespace dotnetapp.Migrations
                 {
                     b.HasOne("dotnetapp.Models.Resort", "Resort")
                         .WithMany("Bookings")
-                        .HasForeignKey("ResortId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("ResortId");
 
                     b.HasOne("dotnetapp.Models.User", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Resort");
 

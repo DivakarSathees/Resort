@@ -1,1 +1,1 @@
-export const apiUrl = 'http://localhost:8080'; // Replace with your Spring Boot backend URL
+export const apiUrl = 'https://8080-fcebccfce309511144aaeaaecbccfdbone.premiumproject.examly.io'; // Replace with your Spring Boot backend URL
