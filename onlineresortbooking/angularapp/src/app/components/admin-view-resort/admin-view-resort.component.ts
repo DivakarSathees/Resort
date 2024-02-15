@@ -19,6 +19,7 @@ export class AdminViewResortComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllResorts();
+    this.selectedResort = {};
   }
 
   getAllResorts() {
@@ -45,10 +46,15 @@ export class AdminViewResortComponent implements OnInit {
   }
 
   editResort(resort: Resort) {
+    console.log('Edit Resort - Selected Resort Before:', this.selectedResort);
+    console.log('Edit Resort - Resort to Edit:', resort);
+    
     // Set the selected resort and enter edit mode
     this.selectedResort = { ...resort }; // Create a copy to avoid direct modification
     this.isEditing = true;
-  }
+
+    console.log('Edit Resort - Selected Resort After:', this.selectedResort);
+}
 
   updateResort(resortDetails: any) {
     // Implement your update logic here, using the resortService.put() method
