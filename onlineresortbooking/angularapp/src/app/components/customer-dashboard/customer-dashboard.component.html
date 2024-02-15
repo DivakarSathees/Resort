@@ -1,0 +1,9 @@
+<nav>
+  <ul class="nav-links">
+    <ng-container *ngIf="isLoggedIn">
+      <li><a routerLink="/customer/view/boat" *ngIf="isCustomer">View Boats</a></li>
+      <li><a routerLink="/customer/view/bookings" *ngIf="isCustomer">View Bookings</a></li>
+    </ng-container>
+  </ul>
+</nav>
+

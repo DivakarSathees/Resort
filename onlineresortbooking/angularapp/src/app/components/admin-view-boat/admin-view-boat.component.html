@@ -1,0 +1,137 @@
+<div id="viewBoatHomeBody" [ngClass]="{ blur: showDeletePopup }">
+  <div class="main-head">
+    <h1>Boat Details</h1>
+  </div>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Boat Id</th>
+          <th>Boat Name</th>
+          <th>Boat Description</th>
+          <th>Boat Image</th>
+          <th>Boat Available Status</th>
+          <th>Boat Address</th>
+          <th>Capacity</th>
+          <th>Price</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let boat of boats">
+          <td>{{ boat.boatId }}</td>
+          <td>
+            <span *ngIf="!isEditing || boat !== selectedBoat">{{
+              boat.boatName
+            }}</span>
+            <input
+              *ngIf="isEditing && boat === selectedBoat"
+              [(ngModel)]="boat.boatName"
+            />
+          </td>
+          <td>
+            <span *ngIf="!isEditing || boat !== selectedBoat">{{
+              boat.boatDescription
+            }}</span>
+            <textarea
+              *ngIf="isEditing && boat === selectedBoat"
+              [(ngModel)]="boat.boatDescription"
+            ></textarea>
+          </td>
+          <td>
+            <img
+              *ngIf="!isEditing || boat !== selectedBoat"
+              [src]="boat.boatImageURL"
+              alt="Boat Image"
+              class="boat-image"
+            />
+            <textarea
+              *ngIf="isEditing && boat === selectedBoat"
+              [(ngModel)]="boat.boatImageURL"
+            ></textarea>
+          </td>
+          <td>
+            <span *ngIf="!isEditing || boat !== selectedBoat">{{
+              boat.boatAvailableStatus
+            }}</span>
+            <input
+              *ngIf="isEditing && boat === selectedBoat"
+              [(ngModel)]="boat.boatAvailableStatus"
+            />
+          </td>
+          <td>
+            <span *ngIf="!isEditing || boat !== selectedBoat">{{
+              boat.boatAddress
+            }}</span>
+            <textarea
+              *ngIf="isEditing && boat === selectedBoat"
+              [(ngModel)]="boat.boatAddress"
+            ></textarea>
+          </td>
+          <td>
+            <span *ngIf="!isEditing || boat !== selectedBoat">{{
+              boat.capacity
+            }}</span>
+            <input
+              *ngIf="isEditing && boat === selectedBoat"
+              [(ngModel)]="boat.capacity"
+              type="number"
+            />
+          </td>
+          <td>
+            <span *ngIf="!isEditing || boat !== selectedBoat">{{
+              boat.price
+            }}</span>
+            <input
+              *ngIf="isEditing && boat === selectedBoat"
+              [(ngModel)]="boat.price"
+              type="number"
+            />
+          </td>
+          <td>
+            <div class="buttons">
+              <button
+                *ngIf="!isEditing || (isEditing && boat !== selectedBoat)"
+                class="edit-btn-grad btn-primary"
+                (click)="editBoat(boat)"
+              >
+                Edit
+              </button>
+              <button
+                *ngIf="isEditing && boat === selectedBoat"
+                class="save-btn-grad btn-primary"
+                (click)="updateBoat(boat)"
+              >
+                Save
+              </button>
+              <button
+                *ngIf="isEditing && boat === selectedBoat"
+                class="cancel-btn-grad btn-primary"
+                (click)="cancelEdit()"
+              >
+                Cancel
+              </button>
+              <button
+                *ngIf="!isEditing || (isEditing && boat !== selectedBoat)"
+                class="delete-btn-grad btn-danger"
+                (click)="showDeletePopup = true; selectedBoat = boat"
+              >
+                Delete
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div *ngIf="showDeletePopup" class="delete-popup">
+  <p>Are you sure you want to delete?</p>
+  <button
+    (click)="deleteBoat(selectedBoat); showDeletePopup = false"
+    id="delete-btn"
+  >
+    Yes, Delete
+  </button>
+  <button (click)="showDeletePopup = false">Cancel</button>
+</div>

@@ -1,0 +1,35 @@
+<div class="main-head">
+    <h1>Boat Details</h1>
+  </div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Boat Id</th>
+        <th>Boat Name</th>
+        <th>Boat Description</th>
+        <th>Boat Image</th>
+        <th>Boat Available Status</th>
+        <th>Boat Address</th>
+        <th>Capacity</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let boat of boats">
+        <td>{{ boat.boatId }}</td>
+        <td>{{ boat.boatName }}</td>
+        <td>{{ boat.boatDescription }}</td>
+        <td>
+          <img [src]="boat.boatImageURL" alt="Boat Image" class="boat-image">
+        </td>
+        <td>{{ boat.boatAvailableStatus }}</td>
+        <td>{{ boat.boatAddress }}</td>
+        <td>{{ boat.capacity }}</td>
+        <td>{{ boat.price }}</td>
+        <td>
+            <button class="edit-btn-grad btn-primary" (click)="navigateToAddBooking()">Add Booking</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
