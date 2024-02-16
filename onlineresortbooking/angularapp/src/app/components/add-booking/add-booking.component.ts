@@ -93,6 +93,7 @@ export class AddBookingComponent implements OnInit {
         resortName: selectedResort.resortName
       });
     }
+    console.log(selectedResort)
   }
 
   navigateToDashboard() {
