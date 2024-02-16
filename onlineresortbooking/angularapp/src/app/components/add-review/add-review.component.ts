@@ -43,7 +43,7 @@ export class AddReviewComponent implements OnInit {
         subject: newReview.subject,
         body: newReview.body,
         rating: newReview.rating,
-        dateCreated: newReview.dateCreated,
+        dateCreated: newReview.dateCreated
       };
       console.log(requestObj)
 
