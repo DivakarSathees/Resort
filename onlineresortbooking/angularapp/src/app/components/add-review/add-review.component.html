@@ -1,14 +1,15 @@
-<h1>Add Review Details</h1>
+<div class="main-container">
+    <h1>Add Review Details</h1>
 
 <form [formGroup]="addReviewForm" (ngSubmit)="onSubmit()">
 
     <div class="form-group">
-        <label for="userId">User:</label>
+        <label for="userId">User Id:</label>
         <input type="number" id="userId" formControlName="userId" readonly>
     </div>
 
     <div class="form-group">
-        <label for="subject">Subject:</label>
+        <label for="subject">Resort Name:</label>
         <input type="text" id="subject" formControlName="subject">
         <div *ngIf="addReviewForm.get('subject').hasError('required') && addReviewForm.get('subject').touched"
              class="error-message">
@@ -17,7 +18,7 @@
     </div>
 
     <div class="form-group">
-        <label for="body">Body:</label>
+        <label for="body">Feedback comments:</label>
         <textarea id="body" formControlName="body"></textarea>
         <div *ngIf="addReviewForm.get('body').hasError('required') && addReviewForm.get('body').touched"
              class="error-message">
@@ -27,7 +28,7 @@
 
     <div class="form-group">
         <label for="rating">Rating:</label>
-        <input type="number" id="rating" formControlName="rating">
+        <input type="number" id="rating" formControlName="rating" min="1" max="5">
         <div *ngIf="addReviewForm.get('rating').hasError('required') && addReviewForm.get('rating').touched"
              class="error-message">
             *Rating is required.
@@ -48,3 +49,5 @@
     </div>
 
 </form>
+
+</div>

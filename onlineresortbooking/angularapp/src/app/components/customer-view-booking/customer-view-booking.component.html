@@ -13,7 +13,7 @@
         <th>To Date</th>
         <th>Total Price</th>
         <th>Status</th>
-        <!-- <th>Actions</th> -->
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -38,14 +38,14 @@
         </td>
         <td>{{ booking.totalPrice }}</td>
         <td>{{ booking.status }}</td>
-        <!-- <td>
+        <td>
           <div class="buttons">
-            <button *ngIf="!isEditing || (isEditing && booking !== selectedBooking)" class="edit-btn-grad btn-primary" (click)="editBooking(booking)">Edit</button>
+            <!-- <button *ngIf="!isEditing || (isEditing && booking !== selectedBooking)" class="edit-btn-grad btn-primary" (click)="editBooking(booking)">Edit</button> -->
             <button *ngIf="isEditing && booking === selectedBooking" class="save-btn-grad btn-primary" (click)="updateBooking(booking)">Save</button>
             <button *ngIf="isEditing && booking === selectedBooking" class="cancel-btn-grad btn-primary" (click)="cancelEdit()">Cancel</button>            
             <button *ngIf="!isEditing || (isEditing && booking !== selectedBooking)" class="delete-btn-grad btn-danger" (click)="showDeletePopup = true; selectedBooking = booking">Delete</button>
           </div>
-        </td> -->
+        </td>
       </tr>
     </tbody>
   </table>
