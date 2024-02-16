@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace dotnetapp.Models
 {
@@ -22,7 +23,7 @@ namespace dotnetapp.Models
         public int Capacity { get; set; }
 
         public string Description { get; set; }
-
+        [JsonIgnore]
         public virtual ICollection<Booking>? Bookings { get; set; }
     }
 }

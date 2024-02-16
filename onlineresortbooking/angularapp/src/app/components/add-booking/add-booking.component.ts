@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BookingService } from 'src/app/services/booking.service';
 import { Booking } from 'src/app/models/booking.model';
-import { BoatService } from 'src/app/services/boat.service';
+import { ResortService } from 'src/app/services/resort.service';
 
 @Component({
   selector: 'app-add-booking',
@@ -11,20 +11,20 @@ import { BoatService } from 'src/app/services/boat.service';
   styleUrls: ['./add-booking.component.css'],
 })
 export class AddBookingComponent implements OnInit {
-  boats: any = [];
+  resorts: any = [];
   addBookingForm: FormGroup;
   errorMessage = '';
-  boatId: string;
+  resortId: string;
 
   constructor(
     private route: ActivatedRoute,
     private fb: FormBuilder,
-    private boatService: BoatService,
+    private resortService: ResortService,
     private bookingService: BookingService,
     private router: Router
   ) {
     this.addBookingForm = this.fb.group({
-      boatId: ['', Validators.required],
+      resortId: ['', Validators.required],
       address: ['', Validators.required],
       noOfPersons: ['', Validators.required],
       fromDate: ['', Validators.required],
@@ -34,31 +34,31 @@ export class AddBookingComponent implements OnInit {
   }
 
   ngOnInit() {
-      this.getAllBoats();
+    this.getAllResorts();
   }
 
-  getAllBoats() {
-    this.boatService.getAllBoats().subscribe((response: any) => {
+  getAllResorts() {
+    this.resortService.getAllResorts().subscribe((response: any) => {
       console.log(response);
-      this.boats = response;
+      this.resorts = response;
       this.addBookingForm.patchValue({
-        boatName: response.boatName,
-        boat: response.boatId,
+        resortName: response.resortName,
+        resortId: response.resortId,
       });
     });
   }
 
   onSubmit(): void {
     if (this.addBookingForm.valid) {
-      const newBoat = this.addBookingForm.value;
+      const newBooking = this.addBookingForm.value;
       const requestObj: Booking = {
-        user: { id: Number(localStorage.getItem('userId')) }, 
-        boat: { boatId: Number(newBoat.boatId) }, 
-        address: newBoat.address,
-        noOfPersons: newBoat.noOfPersons,
-        fromDate: newBoat.fromDate,
-        toDate: newBoat.toDate,
-        totalPrice: newBoat.totalPrice,
+        userId: { id: Number(localStorage.getItem('userId')) },
+        // resort: { resortId: Number(newBooking.resortId) },
+        address: newBooking.address,
+        noOfPersons: newBooking.noOfPersons,
+        fromDate: newBooking.fromDate,
+        toDate: newBooking.toDate,
+        totalPrice: newBooking.totalPrice,
         bookingStatus: 'PENDING',
       };
       console.log('requestObj', requestObj);
@@ -70,7 +70,7 @@ export class AddBookingComponent implements OnInit {
           this.addBookingForm.reset(); // Reset the form
         },
         (error) => {
-          console.error('Error adding boat', error);
+          console.error('Error adding booking', error);
         }
       );
     } else {
@@ -79,10 +79,10 @@ export class AddBookingComponent implements OnInit {
   }
 
   updatePrice(): void {
-    const selectedBoatId = this.addBookingForm.get('boatId').value;
-    const selectedBoat = this.boats.find(boat => boat.boatId === Number(selectedBoatId));
-    if (selectedBoat) {
-      this.addBookingForm.get('totalPrice').setValue(selectedBoat.price);
+    const selectedResortId = this.addBookingForm.get('resortId').value;
+    const selectedResort = this.resorts.find(resort => resort.resortId === Number(selectedResortId));
+    if (selectedResort) {
+      this.addBookingForm.get('totalPrice').setValue(selectedResort.price);
     }
   }
 }
