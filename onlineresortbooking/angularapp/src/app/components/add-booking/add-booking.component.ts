@@ -54,6 +54,16 @@ export class AddBookingComponent implements OnInit {
       const requestObj: Booking = {
         userId: Number(localStorage.getItem('userId')),
         resortId: Number(newBooking.resortId),
+        resort:{
+          resortId: Number(newBooking.resortId),
+          resortName: '', // For example, add the resortName property
+          resortImageUrl: '',
+          resortLocation: '',
+          resortAvailableStatus: '',
+          price: 0,
+          capacity: 0,
+          description: '',        
+        },
         address: newBooking.address,
         noOfPersons: newBooking.noOfPersons,
         fromDate: newBooking.fromDate,
