@@ -18,12 +18,21 @@ export class AddReviewComponent implements OnInit {
       subject: ['', Validators.required],
       body: ['', Validators.required],
       rating: ['', Validators.required],
-      dateCreated: ['', Validators.required],
+      dateCreated: [this.getCurrentDate(), Validators.required],
     });
   }
 
   ngOnInit() {
     // Initialize any data or subscribe to necessary observables
+  }
+
+  getCurrentDate(): string {
+    const currentDate = new Date();
+    const year = currentDate.getFullYear();
+    const month = ('0' + (currentDate.getMonth() + 1)).slice(-2);
+    const day = ('0' + currentDate.getDate()).slice(-2);
+
+    return `${year}-${month}-${day}`;
   }
 
   onSubmit(): void {

@@ -36,11 +36,7 @@
 
     <div class="form-group">
         <label for="dateCreated">Date Created:</label>
-        <input type="date" id="dateCreated" formControlName="dateCreated">
-        <div *ngIf="addReviewForm.get('dateCreated').hasError('required') && addReviewForm.get('dateCreated').touched"
-             class="error-message">
-            *Date Created is required.
-        </div>
+        <input type="date" id="dateCreated" formControlName="dateCreated" readonly>
     </div>
 
     <div *ngIf="errorMessage" class="error-message">

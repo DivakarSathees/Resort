@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace dotnetapp.Models
 {
@@ -21,7 +22,7 @@ namespace dotnetapp.Models
         public int Rating { get; set; }
 
         public DateTime DateCreated { get; set; }
-
+    [JsonIgnore]
         [ForeignKey(nameof(UserId))]
         public virtual User User { get; set; }
     }
