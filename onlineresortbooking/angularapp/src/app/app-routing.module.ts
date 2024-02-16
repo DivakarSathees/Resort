@@ -15,6 +15,7 @@ import { AddResortComponent } from './components/add-resort/add-resort.component
 import { AdminViewResortComponent } from './components/admin-view-resort/admin-view-resort.component';
 import { CustomerViewResortComponent } from './components/customer-view-resort/customer-view-resort.component';
 import { AddReviewComponent } from './components/add-review/add-review.component';
+import { AdminViewReviewComponent } from './components/admin-view-review/admin-view-review.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'admin/add/resort', component: AddResortComponent, canActivate: [AuthGuard]},
   { path: 'admin/view/boat', component: AdminViewBoatComponent, canActivate: [AuthGuard]},
   { path: 'admin/view/resort', component: AdminViewResortComponent, canActivate: [AuthGuard]},
+  { path: 'admin/view/review', component: AdminViewReviewComponent, canActivate: [AuthGuard]},
   { path: 'admin/view/bookings', component: AdminViewBookingComponent, canActivate: [AuthGuard]},
   { path: 'customer/view/boat', component: CustomerViewBoatComponent, canActivate: [AuthGuard]},
   { path: 'customer/view/resort', component: CustomerViewResortComponent, canActivate: [AuthGuard]},
