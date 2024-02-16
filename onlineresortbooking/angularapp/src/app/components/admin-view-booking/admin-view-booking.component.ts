@@ -11,40 +11,34 @@ export class AdminViewBookingComponent implements OnInit {
 
   showDeletePopup = false;
   selectedBooking: Booking; 
-  
-  constructor( private bookingService: BookingService) { }
+  resorts: any[] = []; // Declare the 'resorts' property as an array of any type
 
-  bookings: any[] = []; // Declare the 'mobiles' property as an array of any type
+  constructor(private bookingService: BookingService) { }
 
   ngOnInit(): void {
-    //when add mobile button is clicked, trigger this function getMobilesByUserId()
     this.getAllBookings();
-    //get userid from local storage
   }
 
   getAllBookings() {
     this.bookingService.getAllBookings().subscribe((response: any) => {
-      this.bookings = response;
-      console.log(this.bookings);
-      //pass userid from local storage to bookings
-      // JSON.parse(localStorage.getItem('userId'))
+      this.resorts = response;
     });
   }
 
-  deleteBooking(mobileId: number) {
-    this.bookingService.deleteBooking(mobileId).subscribe(
+  deleteBooking(bookingId: number) {
+    this.bookingService.deleteBooking(bookingId).subscribe(
       (response) => {
-        console.log('Mobile deleted successfully', response);
+        console.log('Booking deleted successfully', response);
         this.getAllBookings();
       },
       (error) => {
-        console.error('Error deleting mobile', error);
+        console.error('Error deleting booking', error);
       }
     );
   }
 
   approveBooking(booking): void {
-    booking.bookingStatus = 'APPROVED';
+    booking.status = 'APPROVED';
     // Call your PUT method here to save the changes to the server
     this.bookingService.updateBooking(booking).subscribe(
       (response) => {
@@ -58,7 +52,7 @@ export class AdminViewBookingComponent implements OnInit {
   }
   
   rejectBooking(booking): void {
-    booking.bookingStatus = 'REJECTED';
+    booking.status = 'REJECTED';
     // Call your PUT method here to save the changes to the server
     this.bookingService.updateBooking(booking).subscribe(
       (response) => {
@@ -70,5 +64,4 @@ export class AdminViewBookingComponent implements OnInit {
       }
     );
   }
-
 }

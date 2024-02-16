@@ -1,52 +1,50 @@
 <div>
   <div class="main-head">
-    <h1>Boat Booking Details</h1>
+    <h1>Resort Booking Details</h1>
   </div>
   <table class="table">
     <thead>
       <tr>
         <th>Booking Id</th>
         <th>User Id</th>
-        <th>Boat Name</th>
-        <th>Address</th>
         <th>Number of Persons</th>
         <th>From Date</th>
         <th>To Date</th>
         <th>Total Price</th>
+        <th>Address</th>
         <th>Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let booking of bookings">
-        <td>{{ booking.bookingId }}</td>
-        <td>{{ booking.user.id }}</td>
-        <td>{{ booking.boat.boatName }}</td>
-        <td>{{ booking.address }}</td>
-        <td>{{ booking.noOfPersons }}</td>
-        <td>{{ booking.fromDate | date : "dd/MM/yyyy" }}</td>
-        <td>{{ booking.toDate | date : "dd/MM/yyyy" }}</td>
-        <td>{{ booking.totalPrice }}</td>
+      <tr *ngFor="let resort of resorts">
+        <td>{{ resort.bookingId }}</td>
+        <td>{{ resort.userId }}</td>
+        <td>{{ resort.noOfPersons }}</td>
+        <td>{{ resort.fromDate | date : "dd/MM/yyyy" }}</td>
+        <td>{{ resort.toDate | date : "dd/MM/yyyy" }}</td>
+        <td>{{ resort.totalPrice }}</td>
+        <td>{{ resort.address }}</td>
         <td>
           <div class="buttons">
             <button
               class="edit-btn-grad btn-primary"
-              (click)="approveBooking(booking)"
+              (click)="approveBooking(resort)"
               [ngStyle]="{
                 'background-color':
-                  booking.bookingStatus === 'APPROVED' ? 'blue' : 'green'
+                  resort.status === 'APPROVED' ? 'blue' : 'green'
               }"
             >
-              {{ booking.bookingStatus === "APPROVED" ? "Accepted" : "Accept" }}
+              {{ resort.status === "APPROVED" ? "Accepted" : "Accept" }}
             </button>
             <button
               class="delete-btn-grad btn-danger"
-              (click)="rejectBooking(booking)"
+              (click)="rejectBooking(resort)"
               [ngStyle]="{
                 'background-color':
-                  booking.bookingStatus === 'REJECTED' ? 'blue' : '#f41818'
+                  resort.status === 'REJECTED' ? 'blue' : '#f41818'
               }"
             >
-              {{ booking.bookingStatus === "REJECTED" ? "Rejected" : "Reject" }}
+              {{ resort.status === "REJECTED" ? "Rejected" : "Reject" }}
             </button>
           </div>
         </td>
