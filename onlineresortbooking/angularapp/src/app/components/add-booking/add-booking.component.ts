@@ -67,7 +67,7 @@ export class AddBookingComponent implements OnInit {
         totalPrice: newBooking.totalPrice,
         status: 'PENDING',
       };
-
+console.log(requestObj)
       this.bookingService.addBooking(requestObj).subscribe(
         (response) => {
           console.log('Booking added successfully', response);
