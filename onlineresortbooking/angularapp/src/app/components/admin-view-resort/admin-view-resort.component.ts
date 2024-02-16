@@ -49,7 +49,7 @@ export class AdminViewResortComponent implements OnInit {
     console.log('Edit Resort - Resort to Edit:', resort);
     
     // Set the selected resort and enter edit mode
-    this.selectedResort = { ...resort }; // Create a copy to avoid direct modification
+    this.selectedResort = resort ; // Create a copy to avoid direct modification
     this.isEditing = true;
 
     console.log('Edit Resort - Selected Resort After:', this.selectedResort);
