@@ -21,7 +21,7 @@
             <td>{{ review.subject }}</td>
             <td>{{ review.body }}</td>
             <td>{{ review.rating }}</td>
-            <td>{{ review.dateCreated }}</td>
+            <td>{{ review.dateCreated | date : "dd/MM/yyyy" }}</td>
           </tr>
         </tbody>
       </table>
