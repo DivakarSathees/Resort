@@ -14,7 +14,7 @@ export class AddBookingComponent implements OnInit {
   resorts: any = [];
   addBookingForm: FormGroup;
   errorMessage = '';
-  resortId: string;
+  showSuccessPopup: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,7 +25,7 @@ export class AddBookingComponent implements OnInit {
   ) {
     this.addBookingForm = this.fb.group({
       resortId: ['', Validators.required],
-      resortName: [''], 
+      resortName: [''],
       address: ['', Validators.required],
       noOfPersons: ['', Validators.required],
       fromDate: ['', Validators.required],
@@ -41,16 +41,9 @@ export class AddBookingComponent implements OnInit {
   getAllResorts() {
     this.resortService.getAllResorts().subscribe((response: any) => {
       console.log(response);
-      const firstResort = response[0];
       this.resorts = response;
-      if (firstResort) {
-      this.addBookingForm.patchValue({
-        resortName: response.resortName,
-        resortId: response.resortId,
-      });}
     });
   }
-  
 
   onSubmit(): void {
     if (this.addBookingForm.valid) {
@@ -58,15 +51,14 @@ export class AddBookingComponent implements OnInit {
       const requestObj: Booking = {
         userId: Number(localStorage.getItem('userId')),
         resortId: Number(newBooking.resortId),
-        resort:{
-          // resortId: Number(newBooking.resortId),
+        resort: {
           resortName: newBooking.resortName,
           resortImageUrl: '',
           resortLocation: '',
           resortAvailableStatus: '',
           price: 0,
           capacity: 0,
-          description: '',        
+          description: '',
         },
         address: newBooking.address,
         noOfPersons: newBooking.noOfPersons,
@@ -75,12 +67,12 @@ export class AddBookingComponent implements OnInit {
         totalPrice: newBooking.totalPrice,
         status: 'PENDING',
       };
-      console.log('requestObj', requestObj);
 
       this.bookingService.addBooking(requestObj).subscribe(
         (response) => {
           console.log('Booking added successfully', response);
-          this.router.navigate(['/customer/dashboard']);
+          this.showSuccessPopup = true;
+          // this.router.navigate(['/customer/dashboard']);
           this.addBookingForm.reset(); // Reset the form
         },
         (error) => {
@@ -96,10 +88,14 @@ export class AddBookingComponent implements OnInit {
     const selectedResortId = this.addBookingForm.get('resortId').value;
     const selectedResort = this.resorts.find(resort => resort.resortId === Number(selectedResortId));
     if (selectedResort) {
-      const selectedResortName = selectedResort.resortName;
-      this.addBookingForm.get('totalPrice').setValue(selectedResort.price);
-      this.addBookingForm.get('resortName').setValue(selectedResortName);
-
+      this.addBookingForm.patchValue({
+        totalPrice: selectedResort.price,
+        resortName: selectedResort.resortName
+      });
     }
   }
+
+  navigateToDashboard() {
+    this.router.navigate(['/customer/dashboard']);
+}
 }

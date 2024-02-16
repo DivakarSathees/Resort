@@ -109,45 +109,45 @@ public class BookingController : ControllerBase
         }
     }
  
-//    [Authorize(Roles = "Customer")]
-// [HttpPut("booking/{bookingId}")]
-// public async Task<IActionResult> UpdateBooking(long bookingId, [FromBody] Booking updatedBooking)
-// {
-//     if (bookingId != updatedBooking.BookingId)
-//     {
-//         return BadRequest();
-//     }
- 
-//     var existingBooking = await _bookingRepo.GetBookingByIdAsync(bookingId);
-//     if (existingBooking == null)
-//     {
-//         return NotFound();
-//     }
- 
-//     existingBooking.NoOfPersons = updatedBooking.NoOfPersons;
-//     existingBooking.FromDate = updatedBooking.FromDate;
-//     existingBooking.ToDate = updatedBooking.ToDate;
-//     existingBooking.Address = updatedBooking.Address;
- 
-//     await _bookingRepo.UpdateBookingAsync(existingBooking);
-//     var updatedData = await _bookingRepo.GetBookingByIdAsync(bookingId);
-//     return Ok(updatedData);
-// }
- 
-    [Authorize(Roles = "Admin")]
-    [HttpPut("booking/{bookingId}")]
-    public async Task<IActionResult> UpdateBookingStatus(long bookingId, [FromBody] string newStatus)
+   [Authorize(Roles = "Admin")]
+[HttpPut("booking/{bookingId}")]
+public async Task<IActionResult> UpdateBooking(long bookingId, [FromBody] Booking updatedBooking)
+{
+    if (bookingId != updatedBooking.BookingId)
     {
-        var booking = await _bookingRepo.GetBookingByIdAsync(bookingId);
-        if (booking == null)
-        {
-            return NotFound();
-        }
- 
-        booking.Status = newStatus;
- 
-        await _bookingRepo.UpdateBookingStatusAsync(bookingId, newStatus);
- 
-        return Ok(booking);
+        return BadRequest();
     }
+ 
+    var existingBooking = await _bookingRepo.GetBookingByIdAsync(bookingId);
+    if (existingBooking == null)
+    {
+        return NotFound();
+    }
+ 
+    existingBooking.NoOfPersons = updatedBooking.NoOfPersons;
+    existingBooking.FromDate = updatedBooking.FromDate;
+    existingBooking.ToDate = updatedBooking.ToDate;
+    existingBooking.Address = updatedBooking.Address;
+ 
+    await _bookingRepo.UpdateBookingAsync(existingBooking);
+    var updatedData = await _bookingRepo.GetBookingByIdAsync(bookingId);
+    return Ok(updatedData);
+}
+ 
+    // [Authorize(Roles = "Admin")]
+    // [HttpPut("booking/{bookingId}")]
+    // public async Task<IActionResult> UpdateBookingStatus(long bookingId, [FromBody] string newStatus)
+    // {
+    //     var booking = await _bookingRepo.GetBookingByIdAsync(bookingId);
+    //     if (booking == null)
+    //     {
+    //         return NotFound();
+    //     }
+ 
+    //     booking.Status = newStatus;
+ 
+    //     await _bookingRepo.UpdateBookingStatusAsync(bookingId, newStatus);
+ 
+    //     return Ok(booking);
+    // }
 }
