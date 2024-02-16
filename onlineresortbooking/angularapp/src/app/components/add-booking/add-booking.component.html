@@ -53,18 +53,13 @@
     <div *ngIf="errorMessage" class="error-message">
         *{{ errorMessage }}
     </div>
-    <div *ngIf="showSuccessPopup" class="success-popup">
-        <p>Payment was successful!</p>
-        <button (click)="navigateToDashboard()">OK</button>
-    </div>
-    
 
     <div class="add-btn">
         <button type="submit">Submit</button>
     </div>
 
 </form>
-<!-- 
 <div *ngIf="showSuccessPopup" class="success-popup">
-    <p>Payment successful!</p>
-  </div> -->
+    <p>Payment was successful!</p>
+    <button (click)="navigateToDashboard()">OK</button>
+</div>
