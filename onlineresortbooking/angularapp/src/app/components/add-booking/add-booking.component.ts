@@ -40,11 +40,13 @@ export class AddBookingComponent implements OnInit {
   getAllResorts() {
     this.resortService.getAllResorts().subscribe((response: any) => {
       console.log(response);
+      const firstResort = response[0];
       this.resorts = response;
+      if (firstResort) {
       this.addBookingForm.patchValue({
         resortName: response.resortName,
         resortId: response.resortId,
-      });
+      });}
     });
   }
 
@@ -55,8 +57,8 @@ export class AddBookingComponent implements OnInit {
         userId: Number(localStorage.getItem('userId')),
         resortId: Number(newBooking.resortId),
         resort:{
-          resortId: Number(newBooking.resortId),
-          resortName: '', // For example, add the resortName property
+          // resortId: Number(newBooking.resortId),
+          resortName: '',
           resortImageUrl: '',
           resortLocation: '',
           resortAvailableStatus: '',
