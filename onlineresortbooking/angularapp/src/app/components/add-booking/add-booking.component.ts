@@ -96,6 +96,6 @@ export class AddBookingComponent implements OnInit {
   }
 
   navigateToDashboard() {
-    this.router.navigate(['/customer/dashboard']);
+    this.router.navigate(['/']);
 }
 }
