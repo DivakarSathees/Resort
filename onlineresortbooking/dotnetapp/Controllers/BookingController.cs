@@ -123,11 +123,12 @@ public async Task<IActionResult> UpdateBooking(long bookingId, [FromBody] Bookin
     {
         return NotFound();
     }
- 
-    existingBooking.NoOfPersons = updatedBooking.NoOfPersons;
-    existingBooking.FromDate = updatedBooking.FromDate;
-    existingBooking.ToDate = updatedBooking.ToDate;
-    existingBooking.Address = updatedBooking.Address;
+
+    existingBooking.Status = updatedBooking.Status;
+    // existingBooking.NoOfPersons = updatedBooking.NoOfPersons;
+    // existingBooking.FromDate = updatedBooking.FromDate;
+    // existingBooking.ToDate = updatedBooking.ToDate;
+    // existingBooking.Address = updatedBooking.Address;
  
     await _bookingRepo.UpdateBookingAsync(existingBooking);
     var updatedData = await _bookingRepo.GetBookingByIdAsync(bookingId);

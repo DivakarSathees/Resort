@@ -36,7 +36,7 @@ export class BookingService {
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}` // Assuming your token is a bearer token, replace it accordingly
     });
-    return this.http.put(`${this.apiUrl}/api/booking/${bookingId}`, booking.status, {headers});
+    return this.http.put(`${this.apiUrl}/api/booking/${bookingId}`, booking, {headers});
   }
 
   deleteBooking(bookingId: number) {
