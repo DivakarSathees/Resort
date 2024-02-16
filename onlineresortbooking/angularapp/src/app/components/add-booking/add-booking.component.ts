@@ -25,6 +25,7 @@ export class AddBookingComponent implements OnInit {
   ) {
     this.addBookingForm = this.fb.group({
       resortId: ['', Validators.required],
+      resortName: [''], 
       address: ['', Validators.required],
       noOfPersons: ['', Validators.required],
       fromDate: ['', Validators.required],
@@ -49,6 +50,7 @@ export class AddBookingComponent implements OnInit {
       });}
     });
   }
+  
 
   onSubmit(): void {
     if (this.addBookingForm.valid) {
@@ -58,7 +60,7 @@ export class AddBookingComponent implements OnInit {
         resortId: Number(newBooking.resortId),
         resort:{
           // resortId: Number(newBooking.resortId),
-          resortName: '',
+          resortName: newBooking.resortName,
           resortImageUrl: '',
           resortLocation: '',
           resortAvailableStatus: '',
@@ -94,7 +96,10 @@ export class AddBookingComponent implements OnInit {
     const selectedResortId = this.addBookingForm.get('resortId').value;
     const selectedResort = this.resorts.find(resort => resort.resortId === Number(selectedResortId));
     if (selectedResort) {
+      const selectedResortName = selectedResort.resortName;
       this.addBookingForm.get('totalPrice').setValue(selectedResort.price);
+      this.addBookingForm.get('resortName').setValue(selectedResortName);
+
     }
   }
 }
