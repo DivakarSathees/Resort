@@ -1,23 +1,23 @@
-<div id="boatBookingHomeBody" [ngClass]="{ blur: showDeletePopup }">
+<div id="resortBookingHomeBody" [ngClass]="{ blur: showDeletePopup }">
   <div class="main-head">
-    <h1>Boat Booking Details</h1>
+    <h1>Resort Booking Details</h1>
   </div>
   <table class="table">
     <thead>
       <tr>
-        <th>Boat Name</th>
+        <th>Resort Name</th>
         <th>Address</th>
         <th>Number of Persons</th>
         <th>From Date</th>
         <th>To Date</th>
         <th>Total Price</th>
         <th>Status</th>
-        <th>Actions</th>
+        <!-- <th>Actions</th> -->
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let booking of bookings">
-        <td>{{ booking.boat.boatName }}</td>
+        <td>{{ booking.resortId }}</td>
         <td>
           <span *ngIf="!isEditing || booking !== selectedBooking">{{ booking.address }}</span>
           <textarea *ngIf="isEditing && booking === selectedBooking" [(ngModel)]="booking.address"></textarea>
@@ -35,15 +35,15 @@
           <input *ngIf="isEditing && booking === selectedBooking" [(ngModel)]="booking.toDate" type="date">
         </td>
         <td>{{ booking.totalPrice }}</td>
-        <td>{{ booking.bookingStatus }}</td>
-        <td>
+        <td>{{ booking.status }}</td>
+        <!-- <td>
           <div class="buttons">
-            <!-- <button *ngIf="!isEditing || (isEditing && booking !== selectedBooking)" class="edit-btn-grad btn-primary" (click)="editBooking(booking)">Edit</button> -->
+            <button *ngIf="!isEditing || (isEditing && booking !== selectedBooking)" class="edit-btn-grad btn-primary" (click)="editBooking(booking)">Edit</button>
             <button *ngIf="isEditing && booking === selectedBooking" class="save-btn-grad btn-primary" (click)="updateBooking(booking)">Save</button>
             <button *ngIf="isEditing && booking === selectedBooking" class="cancel-btn-grad btn-primary" (click)="cancelEdit()">Cancel</button>            
             <button *ngIf="!isEditing || (isEditing && booking !== selectedBooking)" class="delete-btn-grad btn-danger" (click)="showDeletePopup = true; selectedBooking = booking">Delete</button>
           </div>
-        </td>
+        </td> -->
       </tr>
     </tbody>
   </table>

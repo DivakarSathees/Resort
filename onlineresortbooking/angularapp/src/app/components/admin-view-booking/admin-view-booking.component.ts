@@ -31,7 +31,7 @@ export class AdminViewBookingComponent implements OnInit {
     });
   }
 
-  deleteBooking(mobileId: string) {
+  deleteBooking(mobileId: number) {
     this.bookingService.deleteBooking(mobileId).subscribe(
       (response) => {
         console.log('Mobile deleted successfully', response);

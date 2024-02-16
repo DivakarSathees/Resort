@@ -21,7 +21,12 @@ export class BookingService {
   }
 
   getBookingsByUserId() {
-    return this.http.get(`${this.apiUrl}/api/booking/user/${localStorage.getItem('userId')}`);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}` // Assuming your token is a bearer token, replace it accordingly
+    });
+    return this.http.get(`${this.apiUrl}/api/user/${localStorage.getItem('userId')}`, {headers});
   }
 
   updateBooking(booking: any) {
@@ -29,7 +34,7 @@ export class BookingService {
     return this.http.put(`${this.apiUrl}/api/booking/${bookingId}`, booking);
   }
 
-  deleteBooking(bookingId: string) {
+  deleteBooking(bookingId: number) {
     return this.http.delete(`${this.apiUrl}/api/booking/${bookingId}`);
   }
 

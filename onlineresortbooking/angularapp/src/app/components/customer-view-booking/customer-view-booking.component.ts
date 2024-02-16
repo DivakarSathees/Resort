@@ -12,18 +12,17 @@ export class CustomerViewBookingComponent implements OnInit {
   showDeletePopup = false;
   selectedBooking: Booking;
 
+  bookings: Booking[] = []; // Use the Booking type for the 'bookings' property
+
   constructor(private router: Router, private bookingService: BookingService) {}
 
-  bookings: any[] = []; // Declare the 'mobiles' property as an array of any type
-
   ngOnInit(): void {
-    //when add mobile button is clicked, trigger this function getMobilesByUserId()
     this.getBookingsByUserId();
   }
 
   getBookingsByUserId() {
     this.bookingService.getBookingsByUserId().subscribe(
-      (response: any) => {
+      (response: Booking[]) => { // Adjust the response type to Booking[]
         console.log('Bookings fetched successfully', response);
         this.bookings = response;
       },
@@ -33,7 +32,7 @@ export class CustomerViewBookingComponent implements OnInit {
     );
   }
 
-  deleteBooking(selectedBooking: any) {
+  deleteBooking(selectedBooking: Booking) {
     this.bookingService.deleteBooking(selectedBooking.bookingId).subscribe(
       (response) => {
         console.log('Booking deleted successfully', response);
@@ -57,7 +56,7 @@ export class CustomerViewBookingComponent implements OnInit {
     this.selectedBooking = null;
   }
 
-  updateBooking(booking): void {
+  updateBooking(booking: Booking): void {
     // Call your PUT method here
     this.bookingService.updateBooking(booking).subscribe(
       (response) => {
