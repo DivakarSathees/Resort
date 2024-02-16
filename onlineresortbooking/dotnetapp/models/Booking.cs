@@ -31,7 +31,7 @@ namespace dotnetapp.Models
         [JsonIgnore]
         // Foreign key for the Many-to-One relationship with Resort
         public long? ResortId { get; set; } // Nullable foreign key
-        [JsonIgnore]
+        // [JsonIgnore]
 
 
         [ForeignKey(nameof(ResortId))]

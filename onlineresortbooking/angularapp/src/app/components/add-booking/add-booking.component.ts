@@ -42,6 +42,10 @@ export class AddBookingComponent implements OnInit {
     this.resortService.getAllResorts().subscribe((response: any) => {
       console.log(response);
       this.resorts = response;
+      // this.addBookingForm.patchValue({
+      //   totalPrice: response.price,
+      //   resortName: response.resortName
+      // });
     });
   }
 
