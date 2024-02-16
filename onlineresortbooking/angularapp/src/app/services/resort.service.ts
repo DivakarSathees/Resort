@@ -62,4 +62,15 @@ export class ResortService {
 
     return this.http.delete(`${this.apiUrl}/api/resort/${resortId}`, { headers });
   }
+
+  addReview(review: any): Observable<any> {
+    const token = localStorage.getItem('token');
+    // console.log(token)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}` // Assuming your token is a bearer token, replace it accordingly
+    });
+
+    return this.http.post(`${this.apiUrl}/api/review`, review, { headers });
+  }
 }
