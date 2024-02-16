@@ -55,7 +55,7 @@ builder.Services.AddScoped<ResortRepo>();
 builder.Services.AddScoped<ReviewService, ReviewServiceImpl>();
 builder.Services.AddScoped<ReviewRepo>();
 builder.Services.AddScoped<BookingService, BookingServiceImpl>();
-builder.Services.AddScoped<BookingRepo>();
+builder.Services.AddScoped<IBookingRepo, BookingRepo>();
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
