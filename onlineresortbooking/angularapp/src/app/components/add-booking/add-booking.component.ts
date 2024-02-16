@@ -52,14 +52,14 @@ export class AddBookingComponent implements OnInit {
     if (this.addBookingForm.valid) {
       const newBooking = this.addBookingForm.value;
       const requestObj: Booking = {
-        userId: { id: Number(localStorage.getItem('userId')) },
-        // resort: { resortId: Number(newBooking.resortId) },
+        userId: Number(localStorage.getItem('userId')),
+        resortId: Number(newBooking.resortId),
         address: newBooking.address,
         noOfPersons: newBooking.noOfPersons,
         fromDate: newBooking.fromDate,
         toDate: newBooking.toDate,
         totalPrice: newBooking.totalPrice,
-        bookingStatus: 'PENDING',
+        status: 'PENDING',
       };
       console.log('requestObj', requestObj);
 

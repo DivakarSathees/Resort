@@ -2,7 +2,7 @@ import { Resort } from "./resort.model";
 import { User } from "./user.model";
 
 export class Booking {
-  bookingId: number;
+  bookingId?: number;
   noOfPersons: number;
   fromDate: Date;
   toDate: Date;

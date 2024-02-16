@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { apiUrl } from 'src/apiconfig';
 
@@ -12,7 +12,12 @@ export class BookingService {
   constructor(private http: HttpClient) {}
 
   addBooking(booking: any) {
-    return this.http.post(`${this.apiUrl}/api/booking`, booking);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}` // Assuming your token is a bearer token, replace it accordingly
+    });
+    return this.http.post(`${this.apiUrl}/api/booking`, booking, {headers});
   }
 
   getBookingsByUserId() {
