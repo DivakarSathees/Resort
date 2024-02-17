@@ -1,3 +1,8 @@
- { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: RegistrationComponent },
+export class User {
+    Id: number;
+    Email: string;
+    Password: string;
+    Username: string;
+    MobileNumber: string;
+    UserRole: string;
+}
