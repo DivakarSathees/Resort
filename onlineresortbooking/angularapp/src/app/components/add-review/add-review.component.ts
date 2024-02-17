@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Review } from 'src/app/models/review.model'; // Assuming you have the Review model
 import { ResortService } from 'src/app/services/resort.service';
 
@@ -12,7 +13,7 @@ export class AddReviewComponent implements OnInit {
   addReviewForm: FormGroup;
   errorMessage = '';
 
-  constructor(private fb: FormBuilder, private resortService: ResortService) {
+  constructor(private fb: FormBuilder, private resortService: ResortService, private router: Router) {
     this.addReviewForm = this.fb.group({
       userId: [Number(localStorage.getItem('userId')), Validators.required],
       subject: ['', Validators.required],
@@ -51,6 +52,7 @@ export class AddReviewComponent implements OnInit {
         (response) => {
           console.log('Review added successfully', response);
           // Handle success, e.g., navigate to a different page
+          this.router.navigate(['/']);
           this.addReviewForm.reset(); // Reset the form
         },
         (error) => {

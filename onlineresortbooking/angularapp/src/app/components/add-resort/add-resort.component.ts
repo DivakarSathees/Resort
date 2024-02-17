@@ -47,7 +47,7 @@ export class AddResortComponent implements OnInit {
       this.resortService.addResort(requestObj).subscribe(
         (response) => {
           console.log('Resort added successfully', response);
-          this.route.navigate(['/admin/dashboard']);
+          this.route.navigate(['/']);
           this.addResortForm.reset(); // Reset the form
         },
         (error) => {
