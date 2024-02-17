@@ -1,1 +1,12 @@
-<p>organizer-dashboard works!</p>
+<nav>
+    <ul class="nav-links">
+      <ng-container *ngIf="isLoggedIn">
+        <!-- <li><a routerLink="/customer/view/boat" *ngIf="isOrganizer">View Boats</a></li> -->
+        <li><a routerLink="/customer/view/resort" *ngIf="isOrganizer">View Resorts</a></li>
+        <li><a routerLink="/customer/view/bookings" *ngIf="isOrganizer">View Bookings</a></li>
+        <li><a routerLink="/customer/add/review" *ngIf="isOrganizer">Add Review</a></li>
+      </ng-container>
+    </ul>
+  </nav>
+  
+  

@@ -43,16 +43,19 @@ export class AuthService {
         tap(response => {
           console.log(response.token);
           localStorage.setItem('token',response.token)
+          // localStorage.setItem('userId',response.nameid)
+          // localStorage.setItem('userName',response.name)
+          // localStorage.setItem('userRole',response.role)
           const decodedToken = this.decodeToken(response.token);
 
           if (decodedToken) {
-            localStorage.setItem('userId', decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']);
-            localStorage.setItem('userRole', decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']);
-            localStorage.setItem('currentUser', decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress']);
+            localStorage.setItem('userId', decodedToken['nameid']);
+            localStorage.setItem('userRole', decodedToken['role']);
+            localStorage.setItem('currentUser', decodedToken['name']);
             console.log(localStorage.getItem('userRole'))
             // Update BehaviorSubjects
-            this.userRoleSubject.next(decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']);
-            this.userIdSubject.next(decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']);
+            this.userRoleSubject.next(decodedToken['role']);
+            this.userIdSubject.next(decodedToken['name']);
             this.isAuthenticatedSubject.next(true);
           } else {
             console.error('Unable to decode token or missing claims');
@@ -83,7 +86,7 @@ export class AuthService {
     if (token) {
       const decodedToken = this.decodeToken(token);
       console.log("decodedToken", decodedToken);
-      return decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === 'Admin';
+      return decodedToken['role'] === 'Admin';
     }
     return false;
   }
@@ -92,7 +95,7 @@ export class AuthService {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedToken = this.decodeToken(token);
-      return decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === 'Organizer';
+      return decodedToken['role'] === 'Organizer';
     }
     return false;
   }
@@ -101,7 +104,7 @@ export class AuthService {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedToken = this.decodeToken(token);
-      return decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name'];
+      return decodedToken['name'];
     }
     return '';
   }
