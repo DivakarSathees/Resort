@@ -23,7 +23,7 @@ background-color: blue;
 
 nav h1 {
   display: inline;
-  margin-right: 50px;
+  margin-right: 10px;
 }
 
 nav ul {
@@ -34,7 +34,7 @@ nav ul {
 }
 
 nav ul li {
-  margin-right: 40px;
+  margin-right: 20px;
 }
 
 nav ul li a {
@@ -115,3 +115,5 @@ body::before {
 body.blur::before {
   display: block;
 }
+
+

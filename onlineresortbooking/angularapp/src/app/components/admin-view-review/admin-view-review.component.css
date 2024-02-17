@@ -60,3 +60,7 @@ h1 {
 .column-date {
   width: 120px;
 }
+
+h1{
+  text-align: center;
+}
