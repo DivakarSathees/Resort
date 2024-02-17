@@ -88,16 +88,16 @@ export class AuthService {
     return false;
   }
 
-  isCustomer(): boolean {
+  isOrganizer(): boolean {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedToken = this.decodeToken(token);
-      return decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === 'Customer';
+      return decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === 'Organizer';
     }
     return false;
   }
 
-  getCustomerName(): string {
+  getOrganizerName(): string {
     const token = localStorage.getItem('token');
     if (token) {
       const decodedToken = this.decodeToken(token);

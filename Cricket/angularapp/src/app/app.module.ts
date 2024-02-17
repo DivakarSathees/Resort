@@ -7,11 +7,11 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { LoginComponent } from './components/login/login.component';
 import { ErrorComponent } from './components/error/error.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
-import { OrganiserDashboardComponent } from './components/organiser-dashboard/organiser-dashboard.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { OrganizerDashboardComponent } from './components/organizer-dashboard/organizer-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -20,9 +20,9 @@ import { HttpClientModule } from '@angular/common/http';
     LoginComponent,
     ErrorComponent,
     AdminDashboardComponent,
-    OrganiserDashboardComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    OrganizerDashboardComponent
   ],
   imports: [
     BrowserModule,

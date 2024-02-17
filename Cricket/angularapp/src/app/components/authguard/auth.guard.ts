@@ -20,13 +20,13 @@ export class AuthGuard implements CanActivate {
       console.log(user);
       
       if (this.isAdminRoute(url) && user != 'Admin') {
-        console.log("customer entering in admin route");
+        console.log("Organizer entering in admin route");
         this.router.navigate(['/error']);
         return false;
       }
 
-      if (this.isCustomerRoute(url) && user != 'Customer') {
-        console.log("admin entering in customer route");
+      if (this.isOrganizerRoute(url) && user != 'Organizer') {
+        console.log("admin entering in Organizer route");
         this.router.navigate(['/error']);
         return false;
       }
@@ -49,9 +49,9 @@ export class AuthGuard implements CanActivate {
     return adminRoutes.some(route => url.includes(route));
   }
 
-  private isCustomerRoute(url: string): boolean {
-    const customerRoutes = ['organizer/dashboard', 'customer/view/boat', 'customer/add/booking', 'customer/view/bookings'];
-    return customerRoutes.some(route => url.includes(route));
+  private isOrganizerRoute(url: string): boolean {
+    const OrganizerRoutes = ['organizer/dashboard', 'organizer/view/boat', 'organizer/add/booking', 'organizer/view/bookings'];
+    return OrganizerRoutes.some(route => url.includes(route));
   }
 
   private isCommonRoute(url: string): boolean {
