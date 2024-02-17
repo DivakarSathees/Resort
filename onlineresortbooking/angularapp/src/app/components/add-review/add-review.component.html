@@ -13,7 +13,7 @@
         <input type="text" id="subject" formControlName="subject">
         <div *ngIf="addReviewForm.get('subject').hasError('required') && addReviewForm.get('subject').touched"
              class="error-message">
-            *Subject is required.
+            *Resort Name is required.
         </div>
     </div>
 
@@ -22,7 +22,7 @@
         <textarea id="body" formControlName="body"></textarea>
         <div *ngIf="addReviewForm.get('body').hasError('required') && addReviewForm.get('body').touched"
              class="error-message">
-            *Body is required.
+            *Feedback comments is required.
         </div>
     </div>
 
