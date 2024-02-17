@@ -1,7 +1,7 @@
 <nav>
     <ul class="nav-links">
       <ng-container *ngIf="isLoggedIn">
-        <li><a routerLink="/admin/venue" *ngIf="isAdmin">Venue</a></li>
+        <li><a routerLink="/admin/venue/dashboard" *ngIf="isAdmin">Venue</a></li>
         <li><a routerLink="/admin/view/resort" *ngIf="isAdmin">View Resort</a></li>
         <li><a routerLink="/admin/view/bookings" *ngIf="isAdmin">View Bookings</a></li>
       </ng-container>

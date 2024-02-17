@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: RegistrationComponent },
+  { path: 'admin/venue/dashboard', component: AdminVenueDashboardComponent },
   { path: 'error', component: ErrorComponent, data: { message: 'Oops! Something went wrong.' }},
   { path: '**', redirectTo: '/error', pathMatch: 'full' },
 ];
