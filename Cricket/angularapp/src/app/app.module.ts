@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { OrganizerDashboardComponent } from './components/organizer-dashboard/organizer-dashboard.component';
 import { AdminEventDashboardComponent } from './components/admin-event-dashboard/admin-event-dashboard.component';
 import { AdminVenueDashboardComponent } from './components/admin-venue-dashboard/admin-venue-dashboard.component';
+import { AddVenueComponent } from './components/add-venue/add-venue.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AdminVenueDashboardComponent } from './components/admin-venue-dashboard
     HomeComponent,
     OrganizerDashboardComponent,
     AdminEventDashboardComponent,
-    AdminVenueDashboardComponent
+    AdminVenueDashboardComponent,
+    AddVenueComponent
   ],
   imports: [
     BrowserModule,

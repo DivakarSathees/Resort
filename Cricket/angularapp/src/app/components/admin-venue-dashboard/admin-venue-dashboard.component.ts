@@ -29,7 +29,7 @@ export class AdminVenueDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     // when add vacationRental button is clicked, trigger this function getBooksByUserId()
-    this.getVenuesByUserId();
+    this.getAllVenues();
   }
 
   navigateToEditVenue(jobId: { jobId: number }) {
@@ -37,8 +37,8 @@ export class AdminVenueDashboardComponent implements OnInit {
     this.router.navigate(['/edit-job', jobId.jobId]);
   }
 
-  getVenuesByUserId() {
-    this.venueService.getVenuesByUserId().subscribe(
+  getAllVenues() {
+    this.venueService.getAllVenues().subscribe(
       (data) => {
         console.log(data);
         this.venues = data;
@@ -53,7 +53,7 @@ export class AdminVenueDashboardComponent implements OnInit {
     this.venueService.deleteVenue(VenueId).subscribe(
       (response) => {
         console.log('Venue deleted successfully', response);
-        this.getVenuesByUserId();
+        this.getAllVenues();
       },
       (error) => {
         console.error('Error deleting job', error);

@@ -1,0 +1,48 @@
+<div class="main-container">
+    <div class="sub-container">
+        <button class="back-btn" (click)="goBack()">Back</button>
+
+        <h1>Create New Venue</h1>
+
+        <form [formGroup]="venueForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="venueName">Venue Name:</label>
+                <input type="text" id="venueName" formControlName="venueName">
+                <div *ngIf="venueForm.get('venueName').hasError('required') && venueForm.get('venueName').touched">
+                    *Venue Name is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="venueImage">Venue Image:</label>
+                <input type="text" id="venueImage" formControlName="venueImage">
+                <div *ngIf="venueForm.get('venueImage').hasError('required') && venueForm.get('venueImage').touched">
+                    *Venue Image is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="venueDescription">Venue Description:</label>
+                <textarea id="venueDescription" formControlName="venueDescription"></textarea>
+                <div *ngIf="venueForm.get('venueDescription').hasError('required') && venueForm.get('venueDescription').touched">
+                    *Venue Description is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="venueLocation">Venue Location:</label>
+                <input type="text" id="venueLocation" formControlName="venueLocation">
+                <div *ngIf="venueForm.get('venueLocation').hasError('required') && venueForm.get('venueLocation').touched">
+                    *Venue Location is required.
+                </div>
+            </div>
+
+            <div class="button-submit">
+                <button class="button-submit" type="submit">Create Venue</button>
+            </div>
+            <div *ngIf="errorMessage" class="error-message">
+                *{{ errorMessage }}
+            </div>
+        </form>
+    </div>
+</div>
