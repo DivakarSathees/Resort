@@ -19,7 +19,7 @@
     <tbody>
       <tr *ngFor="let booking of bookings">
         <td>{{ booking.resortId }}</td>
-        <td>{{ booking.resort.resortName \ }}</td>
+        <td>{{ booking.resort.resortName }}</td>
         <td>
           <span *ngIf="!isEditing || booking !== selectedBooking">{{ booking.address }}</span>
           <textarea *ngIf="isEditing && booking === selectedBooking" [(ngModel)]="booking.address"></textarea>
