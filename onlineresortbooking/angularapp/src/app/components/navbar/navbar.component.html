@@ -7,9 +7,10 @@
     </ng-container>
     <ng-container *ngIf="isLoggedIn">
       <li><a routerLink="/">Home</a></li>
-      <li> <app-admin-dashboard></app-admin-dashboard>
+       <li> 
+        <!-- <app-admin-dashboard></app-admin-dashboard> -->
       </li>
-      <!-- <li><app-customer-dashboard></app-customer-dashboard></li> -->
+      <li><app-customer-dashboard></app-customer-dashboard></li>
       <li>
         <button class="button button-logout" (click)="showLogoutPopup = true">
           Logout
