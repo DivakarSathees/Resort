@@ -1,0 +1,90 @@
+#venueInfoBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .top-head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  .add-btn-grad,
+  .logout-btn-grad,
+  .delete-btn-grad,
+  .edit-btn-grad {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+  }
+  
+  .add-btn-grad {
+    background-color: #3498db;
+  }
+  
+  .logout-btn-grad {
+    background-color: #e74c3c;
+  }
+  
+  .venue-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .venue-table th,
+  .venue-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .venue-table th {
+    background-color: #3498db;
+    color: #fff;
+  }
+  
+  .venue-image {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 4px;
+  }
+  
+  .delete-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .delete-popup p {
+    margin-bottom: 10px;
+  }
+  
+  #delete-btn {
+    background-color: #e74c3c;
+    color: #fff;
+  }
+  
+  #delete-btn:hover {
+    background-color: #c0392b;
+  }
+  
+  .cancel-btn {
+    background-color: #3498db;
+    color: #fff;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #2980b9;
+  }
+  

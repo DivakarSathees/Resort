@@ -14,10 +14,13 @@ export class VenueService {
 
   addVenue(venueData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/api/venue`, venueData);
-  }}
+  }
 
 
-  
+  getAllVenues(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/api/venue`);
+  }
+
 
   // getJobsByUserId(): Observable<any> {
   //   const userId = localStorage.getItem('userId');
@@ -29,14 +32,11 @@ export class VenueService {
   //   return this.http.put(`${this.apiUrl}/api/job/${id}`, jobData);
   // }
 
-  // deleteJob(jobData: any): Observable<any> {
-  //   const id = jobData.jobId;
-  //   return this.http.delete(`${this.apiUrl}/api/job/${id}`);
-  // }
+  deleteVenue(venueData: any): Observable<any> {
+    const id = venueData.VenueId;
+    return this.http.delete(`${this.apiUrl}/api/venue/${id}`);
+  }
 
-  // getAllJobs(): Observable<any> {
-  //   return this.http.get<any>(`${this.apiUrl}/api/job`);
-  // }
 
   // getJobsById(id: string): Observable<any> {
   //   return this.http.get<any>(`${this.apiUrl}/api/job/${id}`);
@@ -60,3 +60,4 @@ export class VenueService {
   // }
 
 
+}

@@ -29,7 +29,7 @@ export class AdminVenueDashboardComponent implements OnInit {
 
   ngOnInit(): void {
     // when add vacationRental button is clicked, trigger this function getBooksByUserId()
-    // this.getAllVenues();
+    this.getAllVenues();
   }
 
   navigateToEditVenue(jobId: { jobId: number }) {
@@ -37,37 +37,27 @@ export class AdminVenueDashboardComponent implements OnInit {
     this.router.navigate(['/edit-job', jobId.jobId]);
   }
 
-  // getAllVenues() {
-  //   this.venueService.getAllVenues().subscribe(
-  //     (data) => {
-  //       console.log(data);
-  //       this.venues = data;
-  //     },
-  //     (error) => {
-  //       console.error('Error retrieving cricket tournaments', error);
-  //     }
-  //   );
-  // }
-
-  // deleteVenue(VenueId: string) {
-  //   this.venueService.deleteVenue(VenueId).subscribe(
-  //     (response) => {
-  //       console.log('Venue deleted successfully', response);
-  //       this.getAllVenues();
-  //     },
-  //     (error) => {
-  //       console.error('Error deleting job', error);
-  //     }
-  //   );
-  // }
-
-  viewInfo(Venue: any) {
-    console.log(Venue);
-    this.selectedItem = Venue;
-    this.toggleModal();
+  getAllVenues() {
+    this.venueService.getAllVenues().subscribe(
+      (data) => {
+        console.log(data);
+        this.venues = data;
+      },
+      (error) => {
+        console.error('Error retrieving cricket tournaments', error);
+      }
+    );
   }
 
-  toggleModal() {
-    this.showModal = !this.showModal;
+  deleteVenue(VenueId: string) {
+    this.venueService.deleteVenue(VenueId).subscribe(
+      (response) => {
+        console.log('Venue deleted successfully', response);
+        this.getAllVenues();
+      },
+      (error) => {
+        console.error('Error deleting job', error);
+      }
+    );
   }
 }
