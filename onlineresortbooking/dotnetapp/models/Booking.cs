@@ -29,7 +29,7 @@ namespace dotnetapp.Models
  
         [ForeignKey(nameof(UserId))]
         public virtual User? User { get; set; } // Nullable navigation property
-    [JsonIgnore]
+    // [JsonIgnore]
  
         public long? ResortId { get; set; } // Nullable foreign key
    // [JsonIgnore]

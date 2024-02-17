@@ -50,6 +50,7 @@ namespace dotnetapp.Repository
  
         public async Task<Booking> AddBookingAsync(Booking booking)
         {
+            Console.WriteLine(booking);
             _context.Bookings.Add(booking);
             await _context.SaveChangesAsync();
             return booking;
