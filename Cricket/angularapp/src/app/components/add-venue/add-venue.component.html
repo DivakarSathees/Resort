@@ -8,7 +8,7 @@
             <div class="form-group">
                 <label for="venueName">Venue Name:</label>
                 <input type="text" id="venueName" formControlName="venueName">
-                <div *ngIf="venueForm.get('venueName').hasError('required') && venueForm.get('venueName').touched">
+                <div *ngIf="venueForm.get('venueName').hasError('required') && venueForm.get('venueName').touched" class="error-message">
                     *Venue Name is required.
                 </div>
             </div>
@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label for="venueImage">Venue Image:</label>
                 <input type="text" id="venueImage" formControlName="venueImage">
-                <div *ngIf="venueForm.get('venueImage').hasError('required') && venueForm.get('venueImage').touched">
+                <div *ngIf="venueForm.get('venueImage').hasError('required') && venueForm.get('venueImage').touched" class="error-message">
                     *Venue Image is required.
                 </div>
             </div>
@@ -24,7 +24,7 @@
             <div class="form-group">
                 <label for="venueDescription">Venue Description:</label>
                 <textarea id="venueDescription" formControlName="venueDescription"></textarea>
-                <div *ngIf="venueForm.get('venueDescription').hasError('required') && venueForm.get('venueDescription').touched">
+                <div *ngIf="venueForm.get('venueDescription').hasError('required') && venueForm.get('venueDescription').touched" class="error-message">
                     *Venue Description is required.
                 </div>
             </div>
@@ -32,7 +32,7 @@
             <div class="form-group">
                 <label for="venueLocation">Venue Location:</label>
                 <input type="text" id="venueLocation" formControlName="venueLocation">
-                <div *ngIf="venueForm.get('venueLocation').hasError('required') && venueForm.get('venueLocation').touched">
+                <div *ngIf="venueForm.get('venueLocation').hasError('required') && venueForm.get('venueLocation').touched" class="error-message">
                     *Venue Location is required.
                 </div>
             </div>

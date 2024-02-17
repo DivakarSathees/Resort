@@ -1,1 +1,44 @@
-<p>admin-venue-dashboard works!</p>
+<div id="venueInfoBody" [ngClass]="{ blur: showDeletePopup }">
+    <div class="top-head">
+      <button class="add-btn-grad" (click)="navigateToAddJob()">Add Job</button>
+      <button class="logout-btn-grad" (click)="showLogoutPopup = true">Logout</button>
+    </div>
+    <h1>My Venues</h1>
+  
+    <table class="venue-table">
+      <thead>
+        <tr>
+          <th>Venue Name</th>
+          <th>Venue Image</th>
+          <th>Venue Description</th>
+          <th>Venue Location</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let venue of venues">
+          <td>{{ venue.VenueName }}</td>
+          <td>
+            <img [src]="venue.VenueImageURL" alt="Venue Image" class="venue-image" />
+          </td>
+          <td>{{ venue.VenueDescription }}</td>
+          <td>{{ venue.VenueLocation }}</td>
+          <td>
+            <button class="delete-btn-grad btn-danger" (click)="showDeletePopup = true; selectedVenue = venue;">
+              Delete
+            </button>
+            <button class="edit-btn-grad" (click)="navigateToEditVenue(venue)">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div *ngIf="showDeletePopup" class="delete-popup">
+    <p>Are you sure you want to delete?</p>
+    <button (click)="deleteVenue(selectedVenue); showDeletePopup = false" id="delete-btn">
+      Yes, Delete
+    </button>
+    <button (click)="showDeletePopup = false">Cancel</button>
+  </div>
+  
