@@ -12,6 +12,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OrganizerDashboardComponent } from './components/organizer-dashboard/organizer-dashboard.component';
+import { AdminEventDashboardComponent } from './components/admin-event-dashboard/admin-event-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { OrganizerDashboardComponent } from './components/organizer-dashboard/or
     AdminDashboardComponent,
     NavbarComponent,
     HomeComponent,
-    OrganizerDashboardComponent
+    OrganizerDashboardComponent,
+    AdminEventDashboardComponent
   ],
   imports: [
     BrowserModule,
