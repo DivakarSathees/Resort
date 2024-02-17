@@ -22,7 +22,7 @@ export class AdminVenueDashboardComponent implements OnInit {
   ) {}
 
   navigateToAddVenue() {
-    this.router.navigate(['/add-venue']);
+    this.router.navigate(['/admin/add/venue']);
   }
 
   venues: any[] = []; // Declare the 'vacationRentals' property as an array of any type
