@@ -31,9 +31,9 @@ export class AdminRefereeDashboardComponent implements OnInit {
     this.getAllReferees();
   }
 
-  navigateToEditReferee(RefereeId: { RefereeId: number}) {
-    console.log('Referee to be edited', RefereeId);
-    this.router.navigate(['/admin/edit/referee', RefereeId.RefereeId]); // Assuming you have a property named refereeId in your model
+  navigateToEditReferee(RefereeID: { RefereeID: number}) {
+    console.log('Referee to be edited', RefereeID);
+    this.router.navigate(['/admin/edit/referee', RefereeID.RefereeID]); // Assuming you have a property named refereeId in your model
   }
 
   getAllReferees() {

@@ -31,9 +31,9 @@ export class AddRefereeComponent implements OnInit {
         // Prefill the form with referee data
         this.refereeForm.patchValue({
           refereeName: referee.refereeName,
-          refereeImage: referee.refereeImageURL,
+          refereeImageURL: referee.refereeImageURL,
           noOfMatches: referee.noOfMatches,
-          refereeId: referee.refereeId
+          RefereeID: referee.refereeId
         });
       },
       (error) => {
@@ -45,9 +45,9 @@ export class AddRefereeComponent implements OnInit {
   initializeForm(): void {
     this.refereeForm = this.fb.group({
       refereeName: ['', Validators.required],
-      refereeImage: ['', Validators.required],
+      refereeImageURL: ['', Validators.required],
       noOfMatches: ['', Validators.required],
-      refereeId: ['']
+      RefereeID: ['']
     });
   }
 
@@ -64,7 +64,7 @@ export class AddRefereeComponent implements OnInit {
           refereeName: this.refereeForm.get('refereeName').value,
           refereeImageURL: this.refereeForm.get('refereeImage').value,
           noOfMatches: this.refereeForm.get('noOfMatches').value,
-          refereeId: this.refereeForm.get('refereeId').value
+          RefereeID: this.refereeForm.get('refereeId').value
         };
 
         this.refereeService.updateReferee(referee).subscribe(
@@ -79,7 +79,7 @@ export class AddRefereeComponent implements OnInit {
       } else {
         const referee = {
           refereeName: this.refereeForm.get('refereeName').value,
-          refereeImageURL: this.refereeForm.get('refereeImage').value,
+          refereeImageURL: this.refereeForm.get('refereeImageURL').value,
           noOfMatches: this.refereeForm.get('noOfMatches').value
         };
 

@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    height: 80vh;
   }
   
   .sub-container {
@@ -40,7 +40,7 @@
   }
   
   input[type="text"],
-  textarea {
+  [type="number"] {
     width: 90%;
     padding: 8px;
     border: 1px solid #ccc;
@@ -65,3 +65,6 @@
     margin-top: 10px;
   }
   
+  h1{
+    text-align: center;
+  }

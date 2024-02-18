@@ -7,9 +7,9 @@
     <div class="referee-grid">
       <div class="referee-item" *ngFor="let referee of referees">
         <div class="referee-details">
-          <h2>{{ referee.refereeName }}</h2>
-          <img [src]="referee.refereeImageURL" alt="Referee Image" class="referee-image" />
-          <p>No. of Matches: {{ referee.noOfMatches }}</p>
+          <img [src]="referee.RefereeImageURL" alt="Referee Image" class="referee-image" />
+          <h2>{{ referee.RefereeName }}</h2>
+          <p>No. of Matches: {{ referee.NoOfMatches }}</p>
         </div>
         <div class="referee-actions">
           <button class="delete-btn-grad btn-danger" (click)="showDeletePopup = true; selectedReferee = referee;">

@@ -11,25 +11,25 @@
 
         <form [formGroup]="refereeForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label for="refereeName">Referee Name:</label>
-                <input type="text" id="refereeName" formControlName="refereeName">
-                <div *ngIf="refereeForm.get('refereeName').hasError('required') && refereeForm.get('refereeName').touched" class="error-message">
+                <label for="RefereeName">Referee Name:</label>
+                <input type="text" id="RefereeName" formControlName="RefereeName">
+                <div *ngIf="refereeForm.get('RefereeName').hasError('required') && refereeForm.get('RefereeName').touched" class="error-message">
                     *Referee Name is required.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="refereeImage">Referee Image URL:</label>
-                <input type="text" id="refereeImage" formControlName="refereeImageURL">
-                <div *ngIf="refereeForm.get('refereeImageURL').hasError('required') && refereeForm.get('refereeImageURL').touched" class="error-message">
+                <label for="RefereeImage">Referee Image URL:</label>
+                <input type="text" id="RefereeImage" formControlName="RefereeImageURL">
+                <div *ngIf="refereeForm.get('RefereeImageURL').hasError('required') && refereeForm.get('RefereeImageURL').touched" class="error-message">
                     *Referee Image URL is required.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="noOfMatches">Number of Matches:</label>
-                <input type="number" id="noOfMatches" formControlName="noOfMatches">
-                <div *ngIf="refereeForm.get('noOfMatches').hasError('required') && refereeForm.get('noOfMatches').touched" class="error-message">
+                <label for="NoOfMatches">Number of Matches:</label>
+                <input type="number" id="NoOfMatches" formControlName="NoOfMatches">
+                <div *ngIf="refereeForm.get('NoOfMatches').hasError('required') && refereeForm.get('NoOfMatches').touched" class="error-message">
                     *Number of Matches is required.
                 </div>
             </div>

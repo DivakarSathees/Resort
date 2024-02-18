@@ -28,12 +28,12 @@ export class RefereeService {
   // }
 
   updateReferee(refereeData: any): Observable<any> {
-    const id = refereeData.RefereeId;
+    const id = refereeData.RefereeID;
     return this.http.put(`${this.apiUrl}/api/referee/${id}`, refereeData);
   }
 
   deleteReferee(refereeData: any): Observable<any> {
-    const id = refereeData.RefereeId;
+    const id = refereeData.RefereeID;
     return this.http.delete(`${this.apiUrl}/api/referee/${id}`);
   }
 
