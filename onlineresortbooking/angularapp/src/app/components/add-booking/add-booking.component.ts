@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { BookingService } from 'src/app/services/booking.service';
 import { Booking } from 'src/app/models/booking.model';
 import { ResortService } from 'src/app/services/resort.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-booking',
@@ -11,10 +12,11 @@ import { ResortService } from 'src/app/services/resort.service';
   styleUrls: ['./add-booking.component.css'],
 })
 export class AddBookingComponent implements OnInit {
-  resort: any = [];
+  resort$: Observable<any>;  // Use an observable for resort data
   addBookingForm: FormGroup;
   errorMessage = '';
-  showSuccessPopup: boolean = false;
+  showSuccessPopup = false;
+  confirmPayment = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,43 +30,43 @@ export class AddBookingComponent implements OnInit {
       resortName: [''],
       resortLocation: [''],
       totalPrice: [''],
-      capacity:[''],
+      capacity: [''],
       address: ['', Validators.required],
       noOfPersons: ['', Validators.required],
       fromDate: ['', Validators.required],
       toDate: ['', Validators.required],
-    },{ validators: this.dateRangeValidator });
+    }, { validators: this.dateRangeValidator });
   }
 
   ngOnInit() {
     const resortId = this.route.snapshot.paramMap.get('id');
-      this.getResortById(resortId);
+    this.resort$ = this.getResortById(resortId);
   }
 
   dateRangeValidator(control: AbstractControl): { [key: string]: boolean } | null {
     const fromDate = control.get('fromDate')?.value;
     const toDate = control.get('toDate')?.value;
-  
+
     if (fromDate && toDate) {
       const fromDateObj = new Date(fromDate);
       const toDateObj = new Date(toDate);
-  
+
       if (fromDateObj > toDateObj) {
         return { 'dateRangeError': true };
       }
     }
-  
+
     return null;
   }
 
-    getResortById(resortId) {
-    this.resortService.getResortById(resortId).subscribe((response: any) => {
-      console.log(response);
-      this.resort = response;
-    });
+  getResortById(resortId): Observable<any> {
+    return this.resortService.getResortById(resortId);
   }
+  
 
   onSubmit(): void {
+    this.resort$.subscribe((resort) => {
+
     if (this.addBookingForm.valid) {
       const newBooking = this.addBookingForm.value;
       const requestObj: Booking = {
@@ -86,7 +88,7 @@ export class AddBookingComponent implements OnInit {
         totalPrice: newBooking.totalPrice,
         status: 'PENDING',
       };
-console.log(requestObj)
+      console.log(requestObj)
       this.bookingService.addBooking(requestObj).subscribe(
         (response) => {
           console.log('Booking added successfully', response);
@@ -101,9 +103,22 @@ console.log(requestObj)
     } else {
       this.errorMessage = 'All fields are required';
     }
+  })
   }
 
   navigateToDashboard() {
     this.router.navigate(['/']);
-}
+  }
+
+  makePayment() {
+    // Logic to handle payment confirmation
+    // For demonstration purposes, setting showSuccessPopup to true
+    this.showSuccessPopup = true;
+    this.confirmPayment = false; // Close the confirmation dialog
+  }
+
+  cancelPayment() {
+    // Logic to handle cancellation
+    this.confirmPayment = false; // Close the confirmation dialog
+  }
 }

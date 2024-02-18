@@ -3,7 +3,8 @@
     <h1>Add Booking Details</h1>
 
     <form [formGroup]="addBookingForm" (ngSubmit)="onSubmit()">
-    
+        <div *ngIf="(resort$ | async) as resort; else loadingResortData">
+
         <div class="form-group">
             <label for="resortName">Resort Name:</label>
             <input type="text" id="resortName" formControlName="resortName" [value]="resort?.resortName" readonly>
@@ -72,11 +73,18 @@
         <div class="add-btn">
             <button type="submit">Make Payment</button>
         </div>
-    
+    </div>
     </form>
+
+    <div *ngIf="confirmPayment" class="confirmation-popup">
+        <p>Do you want to make the payment?</p>
+        <button (click)="makePayment()">Yes</button>
+        <button (click)="cancelPayment()">Cancel</button>
+    </div>
 
     <div *ngIf="showSuccessPopup" class="success-popup">
         <p>Payment was successful!</p>
         <button (click)="navigateToDashboard()">OK</button>
     </div>
 </div>
+<ng-template #loadingResortData>Loading resort data...</ng-template>
