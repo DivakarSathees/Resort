@@ -7,7 +7,7 @@
   <div class="venue-grid">
       <div class="venue-item" *ngFor="let venue of venues">
           <div class="venue-details">
-              <h2>{{ venue.VenueName }}</h2>
+              <h2>Venue: {{ venue.VenueName }}</h2>
               <img [src]="venue.VenueImageURL" alt="Venue Image" class="venue-image" />
               <p>{{ venue.VenueDescription }}</p>
               <p>{{ venue.VenueLocation }}</p>
