@@ -13,36 +13,37 @@ export class TeamService {
 
   constructor(private http: HttpClient) {}
 
-  addReferee(refereeData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/api/referee`, refereeData);
+  addTeam(teamData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/api/team`, teamData);
   }
 
 
-  getAllReferees(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/api/referee`);
+  getAllTeams(): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/api/team`);
   }
 
 
   // getJobsByUserId(): Observable<any> {
   //   const userId = localStorage.getItem('userId');
-  //   return this.http.get<any>(`${this.apiUrl}/api/referee/user/${userId}`);
+  //   return this.http.get<any>(`${this.apiUrl}/api/team/user/${userId}`);
   // }
 
-  updateReferee(refereeData: any): Observable<any> {
-    const id = refereeData.RefereeID;
-    return this.http.put(`${this.apiUrl}/api/referee/${id}`, refereeData);
+  updateTeam(teamData: any): Observable<any> {
+    const id = teamData.TeamID;
+    return this.http.put(`${this.apiUrl}/api/team/${id}`, teamData);
   }
 
-  deleteReferee(refereeData: any): Observable<any> {
-    const id = refereeData.RefereeID;
-    return this.http.delete(`${this.apiUrl}/api/referee/${id}`);
+  deleteTeam(teamData: any): Observable<any> {
+    const id = teamData.TeamID;
+    return this.http.delete(`${this.apiUrl}/api/team/${id}`);
   }
 
 
-  getRefereeById(id: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/api/referee/${id}`);
+  getTeamById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/api/team/${id}`);
   }
 
   // getAllUsers(): Observable<any> {
   //   return this.http.get<any>(`${this.apiUrl}/api/users`);
   // }}}
+}
