@@ -15,7 +15,7 @@ export class AddReviewComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private resortService: ResortService, private router: Router) {
     this.addReviewForm = this.fb.group({
-      userId: [Number(localStorage.getItem('userId')), Validators.required],
+      userName: [localStorage.getItem('userName'), Validators.required],
       subject: ['', Validators.required],
       body: ['', Validators.required],
       rating: ['', Validators.required],
@@ -25,6 +25,7 @@ export class AddReviewComponent implements OnInit {
 
   ngOnInit() {
     // Initialize any data or subscribe to necessary observables
+    console.log(localStorage.getItem('userName'))
   }
 
   getCurrentDate(): string {
@@ -44,7 +45,15 @@ export class AddReviewComponent implements OnInit {
         subject: newReview.subject,
         body: newReview.body,
         rating: newReview.rating,
-        dateCreated: newReview.dateCreated
+        dateCreated: newReview.dateCreated,
+        user: {
+          userId: Number(localStorage.getItem('userId')),
+          username: localStorage.getItem('userName'),
+          mobileNumber: '',
+          email: '',
+          userRole: '',
+          password:''
+        }
       };
       console.log(requestObj)
 

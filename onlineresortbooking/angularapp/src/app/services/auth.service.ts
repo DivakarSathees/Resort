@@ -48,7 +48,7 @@ export class AuthService {
           if (decodedToken) {
             localStorage.setItem('userId', decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier']);
             localStorage.setItem('userRole', decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']);
-            localStorage.setItem('currentUser', decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress']);
+            localStorage.setItem('userName', decodedToken['http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name']);
             console.log(localStorage.getItem('userRole'))
             // Update BehaviorSubjects
             this.userRoleSubject.next(decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']);
