@@ -32,9 +32,9 @@ export class AdminVenueDashboardComponent implements OnInit {
     this.getAllVenues();
   }
 
-  navigateToEditVenue(jobId: { jobId: number }) {
-    console.log('Venue Id to be edited', jobId);
-    this.router.navigate(['/edit-job', jobId.jobId]);
+  navigateToEditVenue(VenueId: { VenueId: number }) {
+    console.log('Venue Id to be edited', VenueId);
+    this.router.navigate(['/admin/edit/venue', VenueId.VenueId]);
   }
 
   getAllVenues() {

@@ -13,6 +13,7 @@ const routes: Routes = [
   { path: 'signup', component: RegistrationComponent },
   { path: 'admin/venue/dashboard', component: AdminVenueDashboardComponent },
   { path: 'admin/add/venue', component: AddVenueComponent },
+  { path: 'admin/edit/venue/:id', component: AddVenueComponent },
   { path: 'error', component: ErrorComponent, data: { message: 'Oops! Something went wrong.' }},
   { path: '**', redirectTo: '/error', pathMatch: 'full' },
 ];

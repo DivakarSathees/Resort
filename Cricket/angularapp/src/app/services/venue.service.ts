@@ -24,13 +24,13 @@ export class VenueService {
 
   // getJobsByUserId(): Observable<any> {
   //   const userId = localStorage.getItem('userId');
-  //   return this.http.get<any>(`${this.apiUrl}/api/job/user/${userId}`);
+  //   return this.http.get<any>(`${this.apiUrl}/api/venue/user/${userId}`);
   // }
 
-  // updateJob(jobData: any): Observable<any> {
-  //   const id = jobData.jobId;
-  //   return this.http.put(`${this.apiUrl}/api/job/${id}`, jobData);
-  // }
+  updateVenue(venueData: any): Observable<any> {
+    const id = venueData.VenueId;
+    return this.http.put(`${this.apiUrl}/api/venue/${id}`, venueData);
+  }
 
   deleteVenue(venueData: any): Observable<any> {
     const id = venueData.VenueId;
@@ -38,13 +38,13 @@ export class VenueService {
   }
 
 
-  // getJobsById(id: string): Observable<any> {
-  //   return this.http.get<any>(`${this.apiUrl}/api/job/${id}`);
-  // }
+  getVenueById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/api/venue/${id}`);
+  }
 
   // searchJobsByUserId(searchValue: string): Observable<any> {
   //   const userId = localStorage.getItem('userId');
-  //   return this.http.get(`${this.apiUrl}/api/job/user/${userId}`, { params: {userId, searchValue }});
+  //   return this.http.get(`${this.apiUrl}/api/venue/user/${userId}`, { params: {userId, searchValue }});
   // }
 
   // getAllUsers(): Observable<any> {
@@ -52,11 +52,11 @@ export class VenueService {
   // }
 
   // searchJobs(searchValue: string): Observable<any> {
-  //   return this.http.get(`${this.apiUrl}/api/job`, { params: { searchValue }});
+  //   return this.http.get(`${this.apiUrl}/api/venue`, { params: { searchValue }});
   // }
 
   // sortJobs(sortValue: string): Observable<any> {
-  //   return this.http.get(`${this.apiUrl}/api/job`, { params: { sortValue }});
+  //   return this.http.get(`${this.apiUrl}/api/venue`, { params: { sortValue }});
   // }
 
 
