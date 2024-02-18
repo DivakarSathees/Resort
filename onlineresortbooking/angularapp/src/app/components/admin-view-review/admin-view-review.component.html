@@ -6,7 +6,7 @@
       <table class="table">
 <thead>
   <tr>
-    <th class="column-review-id">Review Id</th>
+    <th class="column-review-id">S.No</th>
     <th class="column-user-id">User Id</th>
     <th class="column-subject">Resort Name</th>
     <th class="column-review">Review</th>
@@ -16,8 +16,8 @@
 </thead>
 
         <tbody>
-            <tr *ngFor="let review of reviews">
-            <td>{{ review.reviewId }}</td>
+            <tr *ngFor="let review of reviews"; let i = index>
+            <td>{{ i+1 }}</td>
             <td>{{ review.userId }}</td>
             <td>{{ review.subject }}</td>
             <td>{{ review.body }}</td>

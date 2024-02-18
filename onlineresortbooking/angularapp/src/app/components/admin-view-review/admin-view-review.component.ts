@@ -24,6 +24,7 @@ export class AdminViewReviewComponent implements OnInit {
     this.resortService.getAllReviews().subscribe(
       (data: Review[]) => {
         this.reviews = data;
+        console.log(this.reviews);
       },
       (err) => {
         console.log(err);
