@@ -1,10 +1,15 @@
 <nav>
   <ul class="nav-links">
     <ng-container *ngIf="isLoggedIn">
-      <!-- <li><a routerLink="/customer/view/boat" *ngIf="isCustomer">View Boats</a></li> -->
-      <li><a routerLink="/customer/view/resort" *ngIf="isCustomer">View Resorts</a></li>
-      <li><a routerLink="/customer/view/bookings" *ngIf="isCustomer">View Bookings</a></li>
-      <li><a routerLink="/customer/add/review" *ngIf="isCustomer">Add Review</a></li>
+      <li><a routerLink="/customer/view/resort" *ngIf="isCustomer">Resorts</a></li>
+      <li><a routerLink="/customer/view/bookings" *ngIf="isCustomer">Bookings</a></li>
+      <li *ngIf="isCustomer">
+        <a routerLinkActive="active">Review</a>
+        <ul class="sub-menu">
+          <li><a routerLink="/customer/add/review">Add Review</a></li>
+          <li><a routerLink="/customer/view/review">My Review</a></li>
+        </ul>
+      </li>
     </ng-container>
   </ul>
 </nav>
