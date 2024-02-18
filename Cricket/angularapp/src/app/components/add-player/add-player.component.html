@@ -1,1 +1,110 @@
-<p>add-player works!</p>
+<div class="main-container">
+    <div class="sub-container">
+      <button class="back-btn" (click)="goBack()">Back</button>
+  
+      <ng-container *ngIf="isEditMode; else addPlayerForm">
+        <h1>Edit Player</h1>
+      </ng-container>
+      <ng-template #addPlayerForm>
+        <h1>Create New Player</h1>
+      </ng-template>
+  
+      <form [formGroup]="playerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="PlayerName">Player Name:</label>
+          <input type="text" id="PlayerName" formControlName="PlayerName">
+          <div *ngIf="playerForm.get('PlayerName').hasError('required') && playerForm.get('PlayerName').touched" class="error-message">
+            *Player Name is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="Age">Age:</label>
+          <input type="number" id="Age" formControlName="Age">
+          <div *ngIf="playerForm.get('Age').hasError('required') && playerForm.get('Age').touched" class="error-message">
+            *Age is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="Country">Country:</label>
+          <input type="text" id="Country" formControlName="Country">
+          <div *ngIf="playerForm.get('Country').hasError('required') && playerForm.get('Country').touched" class="error-message">
+            *Country is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="BattingStyle">Batting Style:</label>
+          <input type="text" id="BattingStyle" formControlName="BattingStyle">
+          <div *ngIf="playerForm.get('BattingStyle').hasError('required') && playerForm.get('BattingStyle').touched" class="error-message">
+            *Batting Style is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="BowlingStyle">Bowling Style:</label>
+          <input type="text" id="BowlingStyle" formControlName="BowlingStyle">
+          <div *ngIf="playerForm.get('BowlingStyle').hasError('required') && playerForm.get('BowlingStyle').touched" class="error-message">
+            *Bowling Style is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="DateOfBirth">Date of Birth:</label>
+          <input type="date" id="DateOfBirth" formControlName="DateOfBirth">
+          <div *ngIf="playerForm.get('DateOfBirth').hasError('required') && playerForm.get('DateOfBirth').touched" class="error-message">
+            *Date of Birth is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="Role">Role:</label>
+          <input type="text" id="Role" formControlName="Role">
+          <div *ngIf="playerForm.get('Role').hasError('required') && playerForm.get('Role').touched" class="error-message">
+            *Role is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="TotalMatchesPlayed">Total Matches Played:</label>
+          <input type="number" id="TotalMatchesPlayed" formControlName="TotalMatchesPlayed">
+          <div *ngIf="playerForm.get('TotalMatchesPlayed').hasError('required') && playerForm.get('TotalMatchesPlayed').touched" class="error-message">
+            *Total Matches Played is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="TotalRunsScored">Total Runs Scored:</label>
+          <input type="number" id="TotalRunsScored" formControlName="TotalRunsScored">
+          <div *ngIf="playerForm.get('TotalRunsScored').hasError('required') && playerForm.get('TotalRunsScored').touched" class="error-message">
+            *Total Runs Scored is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="TotalWicketsTaken">Total Wickets Taken:</label>
+          <input type="number" id="TotalWicketsTaken" formControlName="TotalWicketsTaken">
+          <div *ngIf="playerForm.get('TotalWicketsTaken').hasError('required') && playerForm.get('TotalWicketsTaken').touched" class="error-message">
+            *Total Wickets Taken is required.
+          </div>
+        </div>
+  
+        <div class="form-group">
+          <label for="TotalCatches">Total Catches:</label>
+          <input type="number" id="TotalCatches" formControlName="TotalCatches">
+          <div *ngIf="playerForm.get('TotalCatches').hasError('required') && playerForm.get('TotalCatches').touched" class="error-message">
+            *Total Catches is required.
+          </div>
+        </div>
+  
+        <div class="button-submit">
+          <button class="button-submit" type="submit">{{ isEditMode ? 'Update Player' : 'Create Player' }}</button>
+        </div>
+        <div *ngIf="errorMessage" class="error-message">
+          *{{ errorMessage }}
+        </div>
+      </form>
+    </div>
+  </div>
+  

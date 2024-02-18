@@ -21,6 +21,7 @@ export class AdminPlayerDashboardComponent implements OnInit {
   players: Player[] = []; // Assuming Player is the correct model for your players
 
   ngOnInit(): void {
+
     this.getAllPlayers();
   }
 
@@ -37,7 +38,11 @@ export class AdminPlayerDashboardComponent implements OnInit {
     this.playerService.getAllPlayers().subscribe(
       (data) => {
         console.log(data);
-        this.players = data;
+        const selectedTeamId = localStorage.getItem('selectedTeamId');
+
+        this.players = data.filter(player => player.TeamId == parseInt(selectedTeamId, 10));
+
+        // this.players = data;
       },
       (error) => {
         console.error('Error retrieving players', error);

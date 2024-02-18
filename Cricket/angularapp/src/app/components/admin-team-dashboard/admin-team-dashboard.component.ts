@@ -47,6 +47,13 @@ export class AdminTeamDashboardComponent implements OnInit {
       }
     );
   }
+  viewPlayerInfo(teamId: number): void {
+    // Store the TeamId in local storage
+    localStorage.setItem('selectedTeamId', teamId.toString());
+
+    // Navigate to the team dashboard
+    this.router.navigate(['/admin/team-dashboard']);
+}
 
   deleteTeam(teamId: number) {
     this.teamService.deleteTeam(teamId).subscribe(
