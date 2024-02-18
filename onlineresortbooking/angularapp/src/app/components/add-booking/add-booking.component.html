@@ -74,15 +74,14 @@
         </div>
     
     </form>
-
-    <div *ngIf="confirmPayment" class="confirmation-popup">
-        <p>Do you want to make the payment?</p>
-        <button (click)="makePayment()">Yes</button>
-        <button (click)="cancelPayment()">Cancel</button>
-    </div>
-
-    <div *ngIf="showSuccessPopup" class="success-popup">
-        <p>Payment was successful!</p>
-        <button (click)="navigateToDashboard()">OK</button>
-    </div>
+  
+</div>
+<div *ngIf="confirmPayment" class="confirmation-popup">
+    <p>Do you want to make the payment?</p>
+    <button (click)="makePayment()">Yes</button>
+    <button (click)="cancelPayment()">Cancel</button>
+</div>
+<div *ngIf="paymentSuccess" class="success-popup">
+    <p>Payment was successful!</p>
+    <button (click)="navigateToDashboard()">OK</button>
 </div>

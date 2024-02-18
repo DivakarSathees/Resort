@@ -16,6 +16,7 @@ export class AddBookingComponent implements OnInit {
   errorMessage = '';
   showSuccessPopup = false;
   confirmPayment = false;
+  paymentSuccess = false; // New variable to control the success message display
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +26,7 @@ export class AddBookingComponent implements OnInit {
     private router: Router
   ) {
     this.addBookingForm = this.fb.group({
+      // resortId: [''],
       resortName: [''],
       resortLocation: [''],
       totalPrice: [''],
@@ -70,6 +72,7 @@ export class AddBookingComponent implements OnInit {
         totalPrice: response.price,
         capacity: response.capacity,
       });
+      console.log(this.addBookingForm.value)
     });
   }
 
@@ -79,9 +82,9 @@ export class AddBookingComponent implements OnInit {
       const newBooking = this.addBookingForm.value;
       const requestObj: Booking = {
         userId: Number(localStorage.getItem('userId')),
-        resortId: newBooking.resortId,
+        resortId: this.resort.resortId,
         resort: {
-          resortId: newBooking.resortId,
+          resortId:newBooking.resortId,
           resortName: newBooking.resortName,
           resortLocation: newBooking.resortLocation,
           price: newBooking.totalPrice,
@@ -101,7 +104,7 @@ export class AddBookingComponent implements OnInit {
       this.bookingService.addBooking(requestObj).subscribe(
         (response) => {
           console.log('Booking added successfully', response);
-          this.showSuccessPopup = true;
+          this.confirmPayment = true; // Close the confirmation dialog
           this.addBookingForm.reset(); // Reset the form
         },
         (error) => {
