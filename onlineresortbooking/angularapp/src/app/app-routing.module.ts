@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'admin/view/review', component: AdminViewReviewComponent, canActivate: [AuthGuard]},
   { path: 'admin/view/bookings', component: AdminViewBookingComponent, canActivate: [AuthGuard]},
   { path: 'customer/view/resort', component: CustomerViewResortComponent, canActivate: [AuthGuard]},
-  { path: 'customer/add/booking', component: AddBookingComponent, canActivate: [AuthGuard]},
+  { path: 'customer/add/booking/:id', component: AddBookingComponent, canActivate: [AuthGuard]},
   { path: 'customer/view/bookings', component: CustomerViewBookingComponent, canActivate: [AuthGuard]},
     { path: 'customer/add/review', component: AddReviewComponent, canActivate: [AuthGuard]},
   { path: 'error', component: ErrorComponent, data: { message: 'Oops! Something went wrong.' }},

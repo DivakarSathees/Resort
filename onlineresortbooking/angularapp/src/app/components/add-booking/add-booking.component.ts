@@ -35,11 +35,12 @@ export class AddBookingComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getAllResorts();
+    const resortId = this.route.snapshot.paramMap.get('id');
+      this.getResortById(resortId);
   }
 
-  getAllResorts() {
-    this.resortService.getAllResorts().subscribe((response: any) => {
+    getResortById(resortId) {
+    this.resortService.getResortById(resortId).subscribe((response: any) => {
       console.log(response);
       this.resorts = response;
       // this.addBookingForm.patchValue({

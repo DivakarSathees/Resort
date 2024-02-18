@@ -23,5 +23,9 @@ namespace dotnetapp.Service
         {
             return await _reviewRepo.AddReviewAsync(review);
         }
+        public async Task<IEnumerable<Review>> GetReviewsByUserIdAsync(long userId)
+        {
+            return await _reviewRepo.GetReviewsByUserIdAsync(userId);
+        }
     }
 }

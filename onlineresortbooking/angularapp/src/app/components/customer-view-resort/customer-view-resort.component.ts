@@ -24,6 +24,6 @@ export class CustomerViewResortComponent implements OnInit {
   }
 
   navigateToAddBooking(resort) {
-    this.router.navigate(['/customer/add/booking'], resort);
+    this.router.navigate(['/customer/add/booking', resort.resortId]);
   }
 }

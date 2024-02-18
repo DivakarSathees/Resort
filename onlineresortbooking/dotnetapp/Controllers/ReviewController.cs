@@ -42,5 +42,19 @@ namespace dotnetapp.Controllers
             var addedReview = await _reviewService.AddReviewAsync(review);
             return Ok(addedReview);
         }
+        [Authorize(Roles = "Admin,Customer")]
+        [HttpGet("{userId}")]
+        public async Task<IActionResult> GetReviewsByUserId(long userId)
+        {
+            try
+            {
+                var reviews = await _reviewService.GetReviewsByUserIdAsync(userId);
+                return Ok(reviews);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"An error occurred while retrieving reviews for user ID {userId}: {ex.Message}");
+            }
+        }
     }
 }
