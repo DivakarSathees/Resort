@@ -1,6 +1,6 @@
 import { Team } from "./team.model";
 
-export interface Player {
+export class Player {
     playerId: number;
     playerName: string;
     age: number;

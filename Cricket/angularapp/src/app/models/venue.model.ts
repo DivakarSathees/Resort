@@ -1,6 +1,5 @@
 import { Schedule } from "./schedule.model";
 
-
 export class Venue {
     venueId: number;
     venueName: string;

@@ -1,6 +1,6 @@
 import { Schedule } from "./schedule.model";
 
-export interface Referee {
+export class Referee {
     refereeID: number;
     refereeName: string;
     noOfMatches: number;

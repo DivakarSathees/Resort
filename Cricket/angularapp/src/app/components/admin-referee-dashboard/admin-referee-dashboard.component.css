@@ -1,0 +1,133 @@
+#adminRefereeDashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  
+  #adminRefereeDashboard.blur {
+    filter: blur(3px);
+  }
+  
+  .top-head {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .add-btn-grad,
+  .logout-btn-grad,
+  .delete-btn-grad,
+  .edit-btn-grad {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: #fff;
+  }
+  
+  .add-btn-grad {
+    background-color: #4caf50;
+  }
+  
+  .logout-btn-grad {
+    background-color: #e74c3c;
+  }
+  
+  .referee-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Display three items in each row */
+    gap: 20px;
+  }
+  
+  .referee-item {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .referee-details {
+    padding: 20px;
+  }
+  
+  .referee-image {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+  }
+  
+  .referee-actions {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px;
+    /* background-color: #f0f0f0; */
+  }
+  
+  button {
+    width: 100px !important;
+  }
+  
+  /* .referee-image {
+      max-width: 300px;
+      max-height: 300px;
+      border-radius: 4px;
+    } */
+  
+  .delete-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f8f9fa;
+    padding: 60px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 2;
+    color: black;
+    border: 2px solid black;
+  }
+  
+  .delete-popup p {
+    margin-bottom: 10px;
+  }
+  
+  #delete-btn {
+    background-color: #e74c3c;
+    color: #fff;
+    border-radius: 4px;
+    margin-right: 20px;
+    padding: 10px;
+    border-width: 0px;
+    width: 100px;
+  }
+  
+  #delete-btn:hover {
+    background-color: #c0392b;
+  }
+  
+  .cancel-btn {
+    background-color: #dcebf5;
+    color: #000;
+    padding: 10px;
+    width: 100px;
+    border-width: 1px;
+    border-radius: 5px;
+  }
+  
+  .cancel-btn:hover {
+    background-color: #2980b9;
+    color: #fff
+  }
+  
+  .edit-btn-grad {
+    background-color: #3869eb;
+  }
+  
+  .delete-btn-grad {
+    background-color: #cf4320;
+  }

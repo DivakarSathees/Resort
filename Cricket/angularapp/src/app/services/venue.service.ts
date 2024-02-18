@@ -42,22 +42,7 @@ export class VenueService {
     return this.http.get<any>(`${this.apiUrl}/api/venue/${id}`);
   }
 
-  // searchJobsByUserId(searchValue: string): Observable<any> {
-  //   const userId = localStorage.getItem('userId');
-  //   return this.http.get(`${this.apiUrl}/api/venue/user/${userId}`, { params: {userId, searchValue }});
-  // }
-
   // getAllUsers(): Observable<any> {
   //   return this.http.get<any>(`${this.apiUrl}/api/users`);
   // }
-
-  // searchJobs(searchValue: string): Observable<any> {
-  //   return this.http.get(`${this.apiUrl}/api/venue`, { params: { searchValue }});
-  // }
-
-  // sortJobs(sortValue: string): Observable<any> {
-  //   return this.http.get(`${this.apiUrl}/api/venue`, { params: { sortValue }});
-  // }
-
-
 }
