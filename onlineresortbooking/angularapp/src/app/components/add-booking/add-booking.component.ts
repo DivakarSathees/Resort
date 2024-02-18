@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import { BookingService } from 'src/app/services/booking.service';
 import { Booking } from 'src/app/models/booking.model';
 import { ResortService } from 'src/app/services/resort.service';
@@ -33,12 +33,28 @@ export class AddBookingComponent implements OnInit {
       noOfPersons: ['', Validators.required],
       fromDate: ['', Validators.required],
       toDate: ['', Validators.required],
-    });
+    },{ validators: this.dateRangeValidator });
   }
 
   ngOnInit() {
     const resortId = this.route.snapshot.paramMap.get('id');
       this.getResortById(resortId);
+  }
+
+  dateRangeValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const fromDate = control.get('fromDate')?.value;
+    const toDate = control.get('toDate')?.value;
+  
+    if (fromDate && toDate) {
+      const fromDateObj = new Date(fromDate);
+      const toDateObj = new Date(toDate);
+  
+      if (fromDateObj > toDateObj) {
+        return { 'dateRangeError': true };
+      }
+    }
+  
+    return null;
   }
 
     getResortById(resortId) {

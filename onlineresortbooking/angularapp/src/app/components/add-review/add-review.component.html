@@ -10,12 +10,16 @@
 
     <div class="form-group">
         <label for="subject">Resort Name:</label>
-        <input type="text" id="subject" formControlName="subject">
+        <select id="subject" formControlName="subject">
+            <option value="" disabled selected>Select Resort Name</option>
+            <option *ngFor="let resort of resorts" [value]="resort.resortName">{{ resort.resortName }}</option>
+        </select>
         <div *ngIf="addReviewForm.get('subject').hasError('required') && addReviewForm.get('subject').touched"
              class="error-message">
             *Resort Name is required.
         </div>
     </div>
+    
 
     <div class="form-group">
         <label for="body">Feedback comments:</label>

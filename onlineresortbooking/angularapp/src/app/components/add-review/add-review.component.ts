@@ -12,6 +12,7 @@ import { ResortService } from 'src/app/services/resort.service';
 export class AddReviewComponent implements OnInit {
   addReviewForm: FormGroup;
   errorMessage = '';
+  resorts: any[] = [];
 
   constructor(private fb: FormBuilder, private resortService: ResortService, private router: Router) {
     this.addReviewForm = this.fb.group({
@@ -26,6 +27,18 @@ export class AddReviewComponent implements OnInit {
   ngOnInit() {
     // Initialize any data or subscribe to necessary observables
     console.log(localStorage.getItem('userName'))
+    this.getAllResorts();
+  }
+
+  getAllResorts() {
+    this.resortService.getAllResorts().subscribe(
+      (data: any) => {
+        this.resorts = data;
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   getCurrentDate(): string {
