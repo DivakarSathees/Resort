@@ -80,6 +80,7 @@ export class AddPlayerComponent implements OnInit {
             console.log('Player updated successfully', response);
             this.router.navigate(['/admin/player/dashboard']);
           },
+
           (error) => {
             console.error('Error updating player', error);
           }
@@ -92,6 +93,7 @@ export class AddPlayerComponent implements OnInit {
             this.playerForm.reset();
             this.router.navigate(['/admin/player/dashboard']);
           },
+          
           (error) => {
             console.error('Error adding player', error);
           }
