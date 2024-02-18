@@ -22,7 +22,7 @@ namespace dotnetapp.Models
         public int Rating { get; set; }
 
         public DateTime DateCreated { get; set; }
-        [JsonIgnore]
+     //   [JsonIgnore]
         [ForeignKey(nameof(UserId))]
         public virtual User? User { get; set; }
     }

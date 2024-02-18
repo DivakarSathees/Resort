@@ -48,3 +48,11 @@ button:hover {
   color: #ff0000;
   margin-top: 5px;
 }
+
+.rating-buttons {
+  display: flex;
+}
+
+.rating-option {
+  margin-right: 10px;
+}
