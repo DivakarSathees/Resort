@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup, Validators, AbstractControl } from '@angular/fo
 import { BookingService } from 'src/app/services/booking.service';
 import { Booking } from 'src/app/models/booking.model';
 import { ResortService } from 'src/app/services/resort.service';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-booking',
@@ -12,7 +11,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./add-booking.component.css'],
 })
 export class AddBookingComponent implements OnInit {
-  resort$: Observable<any>;  // Use an observable for resort data
+  resort: any = [];
   addBookingForm: FormGroup;
   errorMessage = '';
   showSuccessPopup = false;
@@ -26,7 +25,6 @@ export class AddBookingComponent implements OnInit {
     private router: Router
   ) {
     this.addBookingForm = this.fb.group({
-      resortId: ['', Validators.required],
       resortName: [''],
       resortLocation: [''],
       totalPrice: [''],
@@ -40,7 +38,7 @@ export class AddBookingComponent implements OnInit {
 
   ngOnInit() {
     const resortId = this.route.snapshot.paramMap.get('id');
-    this.resort$ = this.getResortById(resortId);
+    this.getResortById(resortId);
   }
 
   dateRangeValidator(control: AbstractControl): { [key: string]: boolean } | null {
@@ -59,26 +57,37 @@ export class AddBookingComponent implements OnInit {
     return null;
   }
 
-  getResortById(resortId): Observable<any> {
-    return this.resortService.getResortById(resortId);
+  getResortById(resortId) {
+    this.resortService.getResortById(resortId).subscribe((response: any) => {
+      console.log(response);
+      this.resort = response;
+
+      // Use patchValue to pre-fill specific form fields
+      this.addBookingForm.patchValue({
+        resortId: response.resortId,
+        resortName: response.resortName,
+        resortLocation: response.resortLocation,
+        totalPrice: response.price,
+        capacity: response.capacity,
+      });
+    });
   }
-  
 
   onSubmit(): void {
-    this.resort$.subscribe((resort) => {
-
+    console.log(this.addBookingForm)
     if (this.addBookingForm.valid) {
       const newBooking = this.addBookingForm.value;
       const requestObj: Booking = {
         userId: Number(localStorage.getItem('userId')),
-        resortId: Number(newBooking.resortId),
+        resortId: newBooking.resortId,
         resort: {
+          resortId: newBooking.resortId,
           resortName: newBooking.resortName,
+          resortLocation: newBooking.resortLocation,
+          price: newBooking.totalPrice,
+          capacity: newBooking.capacity,
           resortImageUrl: '',
-          resortLocation: '',
           resortAvailableStatus: '',
-          price: 0,
-          capacity: 0,
           description: '',
         },
         address: newBooking.address,
@@ -93,7 +102,6 @@ export class AddBookingComponent implements OnInit {
         (response) => {
           console.log('Booking added successfully', response);
           this.showSuccessPopup = true;
-          // this.router.navigate(['/customer/dashboard']);
           this.addBookingForm.reset(); // Reset the form
         },
         (error) => {
@@ -103,7 +111,6 @@ export class AddBookingComponent implements OnInit {
     } else {
       this.errorMessage = 'All fields are required';
     }
-  })
   }
 
   navigateToDashboard() {
