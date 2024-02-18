@@ -15,6 +15,8 @@ import { OrganizerDashboardComponent } from './components/organizer-dashboard/or
 import { AdminEventDashboardComponent } from './components/admin-event-dashboard/admin-event-dashboard.component';
 import { AdminVenueDashboardComponent } from './components/admin-venue-dashboard/admin-venue-dashboard.component';
 import { AddVenueComponent } from './components/add-venue/add-venue.component';
+import { AdminRefereeDashboardComponent } from './components/admin-referee-dashboard/admin-referee-dashboard.component';
+import { AddRefereeComponent } from './components/add-referee/add-referee.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { AddVenueComponent } from './components/add-venue/add-venue.component';
     OrganizerDashboardComponent,
     AdminEventDashboardComponent,
     AdminVenueDashboardComponent,
-    AddVenueComponent
+    AddVenueComponent,
+    AdminRefereeDashboardComponent,
+    AddRefereeComponent
   ],
   imports: [
     BrowserModule,
