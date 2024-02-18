@@ -12,7 +12,6 @@ import { HomeComponent } from './components/home/home.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { OrganizerDashboardComponent } from './components/organizer-dashboard/organizer-dashboard.component';
-import { AdminEventDashboardComponent } from './components/admin-event-dashboard/admin-event-dashboard.component';
 import { AdminVenueDashboardComponent } from './components/admin-venue-dashboard/admin-venue-dashboard.component';
 import { AddVenueComponent } from './components/add-venue/add-venue.component';
 import { AdminRefereeDashboardComponent } from './components/admin-referee-dashboard/admin-referee-dashboard.component';
@@ -28,7 +27,6 @@ import { AddRefereeComponent } from './components/add-referee/add-referee.compon
     NavbarComponent,
     HomeComponent,
     OrganizerDashboardComponent,
-    AdminEventDashboardComponent,
     AdminVenueDashboardComponent,
     AddVenueComponent,
     AdminRefereeDashboardComponent,
