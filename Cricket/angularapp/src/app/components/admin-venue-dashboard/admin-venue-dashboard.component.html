@@ -7,10 +7,10 @@
   <div class="venue-grid">
       <div class="venue-item" *ngFor="let venue of venues">
           <div class="venue-details">
-              <h2>Venue: {{ venue.VenueName }}</h2>
               <img [src]="venue.VenueImageURL" alt="Venue Image" class="venue-image" />
-              <p>{{ venue.VenueDescription }}</p>
-              <p>{{ venue.VenueLocation }}</p>
+              <p><strong>Venue Name:</strong> {{ venue.VenueName }}</p>
+              <p><strong>Description:</strong> {{ venue.VenueDescription }}</p>
+              <p><strong>Location:</strong> {{ venue.VenueLocation }}</p>
           </div>
           <div class="venue-actions">
               <button class="delete-btn-grad btn-danger" (click)="showDeletePopup = true; selectedVenue = venue;">

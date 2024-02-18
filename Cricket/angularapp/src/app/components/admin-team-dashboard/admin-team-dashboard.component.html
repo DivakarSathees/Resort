@@ -1,0 +1,31 @@
+<p>admin-team-dashboard works!</p>
+<div id="adminTeamDashboard" [ngClass]="{ blur: showDeletePopup }">
+    <div class="top-head">
+        <button class="add-btn-grad" (click)="navigateToAddTeam()">Add Team</button>
+    </div>
+    <h1>Team Dashboard</h1>
+
+    <div class="team-grid">
+        <div class="team-item" *ngFor="let team of teams">
+            <div class="team-details">
+                <img [src]="team.teamImageURL" alt="Team Image" class="team-image" />
+                <h2>{{ team.teamName }}</h2>
+                <p>{{ team.teamDescription }}</p>
+            </div>
+            <div class="team-actions">
+                <button class="delete-btn-grad btn-danger" (click)="showDeletePopup = true; selectedTeam = team;">
+                    Delete
+                </button>
+                <button class="edit-btn-grad" (click)="navigateToEditTeam(team)">Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf="showDeletePopup" class="delete-popup">
+    <p>Are you sure you want to delete?</p>
+    <button (click)="deleteTeam(selectedTeam); showDeletePopup = false" id="delete-btn">
+        Yes, Delete
+    </button>
+    <button (click)="showDeletePopup = false" class="cancel-btn">Cancel</button>
+</div>

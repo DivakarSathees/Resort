@@ -16,6 +16,8 @@ import { AdminVenueDashboardComponent } from './components/admin-venue-dashboard
 import { AddVenueComponent } from './components/add-venue/add-venue.component';
 import { AdminRefereeDashboardComponent } from './components/admin-referee-dashboard/admin-referee-dashboard.component';
 import { AddRefereeComponent } from './components/add-referee/add-referee.component';
+import { AdminTeamDashboardComponent } from './components/admin-team-dashboard/admin-team-dashboard.component';
+import { AddTeamComponent } from './components/add-team/add-team.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { AddRefereeComponent } from './components/add-referee/add-referee.compon
     AdminVenueDashboardComponent,
     AddVenueComponent,
     AdminRefereeDashboardComponent,
-    AddRefereeComponent
+    AddRefereeComponent,
+    AdminTeamDashboardComponent,
+    AddTeamComponent
   ],
   imports: [
     BrowserModule,
