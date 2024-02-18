@@ -29,12 +29,13 @@ export class TeamService {
   // }
 
   updateTeam(teamData: any): Observable<any> {
-    const id = teamData.TeamID;
+    console.log("teamData",teamData)
+    const id = teamData.TeamId;
     return this.http.put(`${this.apiUrl}/api/team/${id}`, teamData);
   }
 
   deleteTeam(teamData: any): Observable<any> {
-    const id = teamData.TeamID;
+    const id = teamData.TeamId;
     return this.http.delete(`${this.apiUrl}/api/team/${id}`);
   }
 

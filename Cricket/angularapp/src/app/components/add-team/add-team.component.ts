@@ -30,6 +30,7 @@ export class AddTeamComponent implements OnInit {
     const teamId = this.route.snapshot.paramMap.get('id');
     this.teamService.getTeamById(teamId).subscribe(
       (team) => {
+        console.log("team in edit is ",team);
         // Prefill the form with team data
         this.teamForm.patchValue({
           TeamName: team.TeamName,
@@ -74,6 +75,8 @@ export class AddTeamComponent implements OnInit {
           TeamId: this.teamForm.get('TeamId').value
         };
 
+        
+       console.log("team",team)
         this.teamService.updateTeam(team).subscribe(
           (response) => {
             console.log('Team updated successfully', response);

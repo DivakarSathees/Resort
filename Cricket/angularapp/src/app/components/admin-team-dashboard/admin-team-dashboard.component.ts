@@ -31,9 +31,9 @@ export class AdminTeamDashboardComponent implements OnInit {
     this.getAllTeams();
   }
 
-  navigateToEditTeam(TeamID: { TeamID: number }) {
+  navigateToEditTeam(TeamID: { TeamId: number }) {
     console.log('Team to be edited', TeamID);
-    this.router.navigate(['/admin/edit/team', TeamID.TeamID]); // Assuming you have a property named teamId in your model
+    this.router.navigate(['/admin/edit/team', TeamID.TeamId]); // Assuming you have a property named teamId in your model
   }
 
   getAllTeams() {
