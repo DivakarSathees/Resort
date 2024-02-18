@@ -13,6 +13,7 @@ import { AdminViewResortComponent } from './components/admin-view-resort/admin-v
 import { CustomerViewResortComponent } from './components/customer-view-resort/customer-view-resort.component';
 import { AddReviewComponent } from './components/add-review/add-review.component';
 import { AdminViewReviewComponent } from './components/admin-view-review/admin-view-review.component';
+import { CustomerViewReviewComponent } from './components/customer-view-review/customer-view-review.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'customer/add/booking/:id', component: AddBookingComponent, canActivate: [AuthGuard]},
   { path: 'customer/view/bookings', component: CustomerViewBookingComponent, canActivate: [AuthGuard]},
     { path: 'customer/add/review', component: AddReviewComponent, canActivate: [AuthGuard]},
+    { path: 'customer/view/review', component: CustomerViewReviewComponent, canActivate: [AuthGuard]},
   { path: 'error', component: ErrorComponent, data: { message: 'Oops! Something went wrong.' }},
   { path: '**', redirectTo: '/error', pathMatch: 'full' },
 ];

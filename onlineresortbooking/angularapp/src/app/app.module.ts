@@ -20,7 +20,7 @@ import { AddReviewComponent } from './components/add-review/add-review.component
 import { AdminViewReviewComponent } from './components/admin-view-review/admin-view-review.component';
 import { AdminViewResortComponent } from './components/admin-view-resort/admin-view-resort.component';
 import { CustomerViewResortComponent } from './components/customer-view-resort/customer-view-resort.component';
-import { CustomerViewReviewComponent } from './customer-view-review/customer-view-review.component';
+import { CustomerViewReviewComponent } from './components/customer-view-review/customer-view-review.component';
 
 @NgModule({
   declarations: [

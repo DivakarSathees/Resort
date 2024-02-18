@@ -61,5 +61,9 @@ namespace dotnetapp.Service
         {
             return await _userRepository.GetAllUsersAsync();
         }
+         public async Task<User> GetUserByIdAsync(long userId)
+        {
+            return await _userRepository.GetUserByIdAsync(userId); 
     }
+}
 }

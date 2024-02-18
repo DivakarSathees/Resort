@@ -93,4 +93,15 @@ export class ResortService {
     });
     return this.http.get(`${this.apiUrl}/api/review`, { headers });
   }
+
+  getReviewsByUserId(){
+    const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
+    // console.log(token)
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}` // Assuming your token is a bearer token, replace it accordingly
+    });
+    return this.http.get(`${this.apiUrl}/api/review/${userId}`, { headers });
+  }
 }

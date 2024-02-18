@@ -6,7 +6,7 @@
     <thead>
       <tr>
         <th>Booking Id</th>
-        <th>User Id</th>
+        <th>User Name</th>
         <th>Resort Name</th>
         <th>Number of Persons</th>
         <th>From Date</th>
@@ -19,7 +19,7 @@
     <tbody>
       <tr *ngFor="let resort of resorts">
         <td>{{ resort.bookingId }}</td>
-        <td>{{ resort.userId }}</td>
+        <td>{{ resort.userName }}</td>
         <td>{{ resort.resort.resortName }}</td>
         <td>{{ resort.noOfPersons }}</td>
         <td>{{ resort.fromDate | date : "dd/MM/yyyy" }}</td>
