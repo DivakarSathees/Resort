@@ -12,11 +12,8 @@ import { CustomerDashboardComponent } from './components/customer-dashboard/cust
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AddBoatComponent } from './components/add-boat/add-boat.component';
-import { AdminViewBoatComponent } from './components/admin-view-boat/admin-view-boat.component';
 import { AdminViewBookingComponent } from './components/admin-view-booking/admin-view-booking.component';
 import { CustomerViewBookingComponent } from './components/customer-view-booking/customer-view-booking.component';
-import { CustomerViewBoatComponent } from './components/customer-view-boat/customer-view-boat.component';
 import { AddBookingComponent } from './components/add-booking/add-booking.component';
 import { AddResortComponent } from './components/add-resort/add-resort.component';
 import { AddReviewComponent } from './components/add-review/add-review.component';
@@ -34,11 +31,8 @@ import { CustomerViewResortComponent } from './components/customer-view-resort/c
     AdminDashboardComponent,
     CustomerDashboardComponent,
     NavbarComponent,
-    AddBoatComponent,
-    AdminViewBoatComponent,
     AdminViewBookingComponent,
     CustomerViewBookingComponent,
-    CustomerViewBoatComponent,
     AddBookingComponent,
     AddResortComponent,
     AddReviewComponent,
