@@ -104,8 +104,8 @@ export class AddBookingComponent implements OnInit {
       this.bookingService.addBooking(requestObj).subscribe(
         (response) => {
           console.log('Booking added successfully', response);
-          this.confirmPayment = true; // Close the confirmation dialog
-          this.addBookingForm.reset(); // Reset the form
+          this.showSuccessPopup = true;
+          this.confirmPayment = true;          this.addBookingForm.reset(); // Reset the form
         },
         (error) => {
           console.error('Error adding booking', error);
@@ -123,7 +123,7 @@ export class AddBookingComponent implements OnInit {
   makePayment() {
     // Logic to handle payment confirmation
     // For demonstration purposes, setting showSuccessPopup to true
-    this.showSuccessPopup = true;
+    this.paymentSuccess = true;
     this.confirmPayment = false; // Close the confirmation dialog
   }
 

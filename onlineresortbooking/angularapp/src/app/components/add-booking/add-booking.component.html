@@ -1,4 +1,4 @@
-<div id="viewBookingHomeBody" [ngClass]="{ blur: showSuccessPopup }">
+<div id="viewBookingHomeBody" [ngClass]="{ blur: confirmPayment || paymentSuccess}">
 
     <h1>Add Booking Details</h1>
 
@@ -70,18 +70,19 @@
         </div>
     
         <div class="add-btn">
-            <button type="submit">Make Payment</button>
+            <button type="submit" *ngIf="!confirmPayment">Make Payment</button>
         </div>
     
     </form>
-  
-</div>
-<div *ngIf="confirmPayment" class="confirmation-popup">
-    <p>Do you want to make the payment?</p>
-    <button (click)="makePayment()">Yes</button>
-    <button (click)="cancelPayment()">Cancel</button>
-</div>
-<div *ngIf="paymentSuccess" class="success-popup">
-    <p>Payment was successful!</p>
-    <button (click)="navigateToDashboard()">OK</button>
+
+    <div *ngIf="confirmPayment" class="delete-popup">
+        <p>Do you want to proceed with the payment?</p>
+        <button (click)="makePayment()">Yes, Proceed</button>
+        <button (click)="confirmPayment = false">Cancel</button>
+    </div>
+    
+    <div *ngIf="paymentSuccess" class="success-popup">
+        <p>Payment was successful!</p>
+        <button (click)="navigateToDashboard()">OK</button>
+    </div>
 </div>
