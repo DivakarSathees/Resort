@@ -97,6 +97,7 @@ button:hover {
 .confirmation-popup {
   /* display: none; */
   position: fixed;
+  text-align: center;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -104,6 +105,7 @@ button:hover {
   background-color: #fff;
   border: 1px solid #ccc;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin:10px:
   /* z-index: 1000; */
 }
 
@@ -126,5 +128,7 @@ button:hover {
   background-color: #45a049;
 }
 
-
+.buttons{
+  display:flex;
+}
 /* Add more styling as needed */

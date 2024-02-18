@@ -70,19 +70,21 @@
         </div>
     
         <div class="add-btn">
-            <button type="submit" *ngIf="!confirmPayment">Make Payment</button>
+            <button type="submit" (click)="confirmPayment = true">Make Payment</button>
         </div>
     
     </form>
+</div>
+<div *ngIf="confirmPayment" class="confirmation-popup">
+    <h2>Payment Confirmation</h2>
+    <p>Do you want to proceed with the payment?</p>
+    <div class="buttons">
+        <button (click)="makePayment()">Confirm Payment</button>
+    <button (click)="confirmPayment = false">Cancel</button>
+    </div>
+</div>
 
-    <div *ngIf="confirmPayment" class="delete-popup">
-        <p>Do you want to proceed with the payment?</p>
-        <button (click)="makePayment()">Yes, Proceed</button>
-        <button (click)="confirmPayment = false">Cancel</button>
-    </div>
-    
-    <div *ngIf="paymentSuccess" class="success-popup">
-        <p>Payment was successful!</p>
-        <button (click)="navigateToDashboard()">OK</button>
-    </div>
+<div *ngIf="paymentSuccess" class="success-popup">
+    <p>Payment was successful!</p>
+    <button (click)="navigateToDashboard()">Close</button>
 </div>

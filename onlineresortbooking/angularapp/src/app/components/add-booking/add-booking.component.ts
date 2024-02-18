@@ -77,6 +77,10 @@ export class AddBookingComponent implements OnInit {
   }
 
   onSubmit(): void {
+    if (this.confirmPayment) {
+      // The "Cancel" button was clicked, do not submit the form
+      return;
+  }
     console.log(this.addBookingForm)
     if (this.addBookingForm.valid) {
       const newBooking = this.addBookingForm.value;
@@ -101,11 +105,11 @@ export class AddBookingComponent implements OnInit {
         status: 'PENDING',
       };
       console.log(requestObj)
+      // this.confirmPayment = false;
       this.bookingService.addBooking(requestObj).subscribe(
         (response) => {
           console.log('Booking added successfully', response);
-          this.showSuccessPopup = true;
-          this.confirmPayment = true;          this.addBookingForm.reset(); // Reset the form
+          this.addBookingForm.reset(); // Reset the form
         },
         (error) => {
           console.error('Error adding booking', error);
