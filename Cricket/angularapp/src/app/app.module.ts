@@ -18,6 +18,8 @@ import { AdminRefereeDashboardComponent } from './components/admin-referee-dashb
 import { AddRefereeComponent } from './components/add-referee/add-referee.component';
 import { AdminTeamDashboardComponent } from './components/admin-team-dashboard/admin-team-dashboard.component';
 import { AddTeamComponent } from './components/add-team/add-team.component';
+import { AdminPlayerDashboardComponent } from './components/admin-player-dashboard/admin-player-dashboard.component';
+import { AddPlayerComponent } from './components/add-player/add-player.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { AddTeamComponent } from './components/add-team/add-team.component';
     AdminRefereeDashboardComponent,
     AddRefereeComponent,
     AdminTeamDashboardComponent,
-    AddTeamComponent
+    AddTeamComponent,
+    AdminPlayerDashboardComponent,
+    AddPlayerComponent
   ],
   imports: [
     BrowserModule,

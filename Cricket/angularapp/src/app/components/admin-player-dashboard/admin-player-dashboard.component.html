@@ -1,0 +1,38 @@
+<div id="adminPlayerDashboard" [ngClass]="{ blur: showDeletePopup }">
+    <div class="top-head">
+        <button class="add-btn-grad" (click)="navigateToAddPlayer()">Add Player</button>
+    </div>
+    <h1>Player Dashboard</h1>
+
+    <div class="player-grid">
+        <div *ngIf="players.length > 0; else noRecords">
+            <div class="player-item" *ngFor="let player of players">
+                <div class="player-details">
+                    <h2>{{ player.PlayerName }}</h2>
+                    <p>Age: {{ player.Age }}, Country: {{ player.Country }}</p>
+                    <!-- Add other player details as needed -->
+                </div>
+                <div class="player-actions">
+                    <button class="delete-btn-grad btn-danger" (click)="showDeletePopup = true; selectedPlayer = player;">
+                        Delete
+                    </button>
+                    <button class="edit-btn-grad" (click)="navigateToEditPlayer(player)">Edit</button>
+                </div>
+            </div>
+        </div>
+        <ng-template #noRecords>
+            <div id="no-records">
+                <img src="https://cdni.iconscout.com/illustration/premium/thumb/no-data-found-8867280-7265556.png?f=webp" alt="No Records Found" />
+                <h1>No records found</h1>
+            </div>
+        </ng-template>
+    </div>
+</div>
+
+<div *ngIf="showDeletePopup" class="delete-popup">
+    <p>Are you sure you want to delete?</p>
+    <button (click)="deletePlayer(selectedPlayer.PlayerId); showDeletePopup = false" id="delete-btn">
+        Yes, Delete
+    </button>
+    <button (click)="showDeletePopup = false" class="cancel-btn">Cancel</button>
+</div>

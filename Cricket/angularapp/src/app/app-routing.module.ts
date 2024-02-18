@@ -10,6 +10,8 @@ import { AddRefereeComponent } from './components/add-referee/add-referee.compon
 import { AdminRefereeDashboardComponent } from './components/admin-referee-dashboard/admin-referee-dashboard.component';
 import { AddTeamComponent } from './components/add-team/add-team.component';
 import { AdminTeamDashboardComponent } from './components/admin-team-dashboard/admin-team-dashboard.component';
+import { AdminPlayerDashboardComponent } from './components/admin-player-dashboard/admin-player-dashboard.component';
+import { AddPlayerComponent } from './components/add-player/add-player.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +26,9 @@ const routes: Routes = [
   { path: 'admin/team/dashboard', component: AdminTeamDashboardComponent },
   { path: 'admin/add/team', component: AddTeamComponent },
   { path: 'admin/edit/team/:id', component: AddTeamComponent },
+  { path: 'admin/player/dashboard', component: AdminPlayerDashboardComponent },
+  { path: 'admin/add/player', component: AddPlayerComponent },
+  { path: 'admin/edit/player/:id', component: AddPlayerComponent },
   { path: 'error', component: ErrorComponent, data: { message: 'Oops! Something went wrong.' }},
   { path: '**', redirectTo: '/error', pathMatch: 'full' },
 ];
