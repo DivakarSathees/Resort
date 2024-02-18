@@ -11,7 +11,7 @@ import { ResortService } from 'src/app/services/resort.service';
   styleUrls: ['./add-booking.component.css'],
 })
 export class AddBookingComponent implements OnInit {
-  resorts: any = [];
+  resort: any = [];
   addBookingForm: FormGroup;
   errorMessage = '';
   showSuccessPopup: boolean = false;
@@ -26,11 +26,13 @@ export class AddBookingComponent implements OnInit {
     this.addBookingForm = this.fb.group({
       resortId: ['', Validators.required],
       resortName: [''],
+      resortLocation: [''],
+      totalPrice: [''],
+      capacity:[''],
       address: ['', Validators.required],
       noOfPersons: ['', Validators.required],
       fromDate: ['', Validators.required],
       toDate: ['', Validators.required],
-      totalPrice: ['', Validators.required],
     });
   }
 
@@ -42,11 +44,7 @@ export class AddBookingComponent implements OnInit {
     getResortById(resortId) {
     this.resortService.getResortById(resortId).subscribe((response: any) => {
       console.log(response);
-      this.resorts = response;
-      // this.addBookingForm.patchValue({
-      //   totalPrice: response.price,
-      //   resortName: response.resortName
-      // });
+      this.resort = response;
     });
   }
 
@@ -87,18 +85,6 @@ console.log(requestObj)
     } else {
       this.errorMessage = 'All fields are required';
     }
-  }
-
-  updatePrice(): void {
-    const selectedResortId = this.addBookingForm.get('resortId').value;
-    const selectedResort = this.resorts.find(resort => resort.resortId === Number(selectedResortId));
-    if (selectedResort) {
-      this.addBookingForm.patchValue({
-        totalPrice: selectedResort.price,
-        resortName: selectedResort.resortName
-      });
-    }
-    console.log(selectedResort)
   }
 
   navigateToDashboard() {
