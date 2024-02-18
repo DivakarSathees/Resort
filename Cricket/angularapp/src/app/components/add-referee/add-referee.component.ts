@@ -25,15 +25,15 @@ export class AddRefereeComponent implements OnInit {
   }
 
   loadRefereeData(): void {
-    const refereeId = this.route.snapshot.paramMap.get('id');
-    this.refereeService.getRefereeById(refereeId).subscribe(
+    const RefereeID = this.route.snapshot.paramMap.get('id');
+    this.refereeService.getRefereeById(RefereeID).subscribe(
       (referee) => {
         // Prefill the form with referee data
         this.refereeForm.patchValue({
-          refereeName: referee.refereeName,
-          refereeImageURL: referee.refereeImageURL,
-          noOfMatches: referee.noOfMatches,
-          RefereeID: referee.refereeId
+          RefereeName: referee.RefereeName,
+          RefereeImageURL: referee.RefereeImageURL,
+          NoOfMatches: referee.NoOfMatches,
+          RefereeID: referee.RefereeID
         });
       },
       (error) => {
@@ -44,9 +44,9 @@ export class AddRefereeComponent implements OnInit {
 
   initializeForm(): void {
     this.refereeForm = this.fb.group({
-      refereeName: ['', Validators.required],
-      refereeImageURL: ['', Validators.required],
-      noOfMatches: ['', Validators.required],
+      RefereeName: ['', Validators.required],
+      RefereeImageURL: ['', Validators.required],
+      NoOfMatches: ['', Validators.required],
       RefereeID: ['']
     });
   }
@@ -61,10 +61,10 @@ export class AddRefereeComponent implements OnInit {
       if (this.isEditMode) {
         // Handle updating an existing referee
         const referee = {
-          refereeName: this.refereeForm.get('refereeName').value,
-          refereeImageURL: this.refereeForm.get('refereeImage').value,
-          noOfMatches: this.refereeForm.get('noOfMatches').value,
-          RefereeID: this.refereeForm.get('refereeId').value
+          RefereeName: this.refereeForm.get('RefereeName').value,
+          RefereeImageURL: this.refereeForm.get('RefereeImageURL').value,
+          NoOfMatches: this.refereeForm.get('NoOfMatches').value,
+          RefereeID: this.refereeForm.get('RefereeID').value
         };
 
         this.refereeService.updateReferee(referee).subscribe(
@@ -78,9 +78,9 @@ export class AddRefereeComponent implements OnInit {
         );
       } else {
         const referee = {
-          refereeName: this.refereeForm.get('refereeName').value,
-          refereeImageURL: this.refereeForm.get('refereeImageURL').value,
-          noOfMatches: this.refereeForm.get('noOfMatches').value
+          RefereeName: this.refereeForm.get('RefereeName').value,
+          RefereeImageURL: this.refereeForm.get('RefereeImageURL').value,
+          NoOfMatches: this.refereeForm.get('NoOfMatches').value
         };
 
         this.refereeService.addReferee(referee).subscribe(
