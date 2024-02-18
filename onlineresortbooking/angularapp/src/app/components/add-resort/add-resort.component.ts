@@ -13,11 +13,12 @@ export class AddResortComponent implements OnInit {
 
   addResortForm: FormGroup;
   errorMessage = '';
+  photoImage="";
 
   constructor(private fb: FormBuilder, private resortService: ResortService, private route: Router) {
     this.addResortForm = this.fb.group({
       resortName: ['', Validators.required],
-      resortImageUrl: ['', Validators.required],
+      resortImageUrl: [null, Validators.required],
       resortLocation: ['', Validators.required],
       description: ['', Validators.required],
       resortAvailableStatus: ['', Validators.required],
@@ -35,7 +36,7 @@ export class AddResortComponent implements OnInit {
       const requestObj: Resort = {
         // userId: localStorage.getItem('userId'),
         resortName: newResort.resortName,
-        resortImageUrl: newResort.resortImageUrl,
+        resortImageUrl: this.photoImage,
         resortLocation: newResort.resortLocation,
         description: newResort.description,
         resortAvailableStatus: newResort.resortAvailableStatus,
@@ -57,6 +58,38 @@ export class AddResortComponent implements OnInit {
     } else {
       this.errorMessage = "All fields are required";
     }
+  }
+
+  handleFileChange(event: any): void {
+    const file = event.target.files[0];
+
+    if (file) {
+      this.convertFileToBase64(file).then(
+        (base64String) => {
+          this.photoImage=base64String
+        },
+        (error) => {
+          console.error('Error converting file to base64:', error);
+          // Handle error appropriately
+        }
+      );
+    }
+  }
+
+  convertFileToBase64(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        resolve(reader.result as string);
+      };
+
+      reader.onerror = (error) => {
+        reject(error);
+      };
+
+      reader.readAsDataURL(file);
+    });
   }
 
 }

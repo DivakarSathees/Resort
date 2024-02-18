@@ -10,10 +10,10 @@
     </div>
 
     <div class="form-group">
-        <label for="resortImageUrl">Resort Image URL:</label>
-        <input type="text" id="resortImageUrl" formControlName="resortImageUrl">
+        <label for="resortImageUrl">Resort Image:</label>
+        <input type="file" id="resortImageUrl" formControlName="resortImageUrl" (change)="handleFileChange($event)" accept=".png, .jpg">
         <div *ngIf="addResortForm.get('resortImageUrl').hasError('required') && addResortForm.get('resortImageUrl').touched" class="error-message">
-            *Resort Image URL is required.
+            *Resort Image is required.
         </div>
     </div>
 
@@ -35,11 +35,16 @@
 
     <div class="form-group">
         <label for="resortAvailableStatus">Resort Available Status:</label>
-        <input id="resortAvailableStatus" formControlName="resortAvailableStatus">
+        <select id="resortAvailableStatus" formControlName="resortAvailableStatus">
+            <option value="" disabled selected>Select availability</option>
+            <option value="Available">Available</option>
+          <option value="Unavailable">Unavailable</option>
+        </select>
         <div *ngIf="addResortForm.get('resortAvailableStatus').hasError('required') && addResortForm.get('resortAvailableStatus').touched" class="error-message">
-            *Resort available status is required.
+          *Resort available status is required.
         </div>
-    </div>
+      </div>
+      
 
     <div class="form-group">
         <label for="price">Price:</label>

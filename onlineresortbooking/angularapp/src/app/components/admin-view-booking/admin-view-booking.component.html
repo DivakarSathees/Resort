@@ -7,6 +7,7 @@
       <tr>
         <th>Booking Id</th>
         <th>User Id</th>
+        <th>Resort Name</th>
         <th>Number of Persons</th>
         <th>From Date</th>
         <th>To Date</th>
@@ -19,6 +20,7 @@
       <tr *ngFor="let resort of resorts">
         <td>{{ resort.bookingId }}</td>
         <td>{{ resort.userId }}</td>
+        <td>{{ resort.resort.resortName }}</td>
         <td>{{ resort.noOfPersons }}</td>
         <td>{{ resort.fromDate | date : "dd/MM/yyyy" }}</td>
         <td>{{ resort.toDate | date : "dd/MM/yyyy" }}</td>

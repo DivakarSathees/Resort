@@ -23,7 +23,7 @@ export class CustomerViewResortComponent implements OnInit {
     });
   }
 
-  navigateToAddBooking() {
-    this.router.navigate(['/customer/add/booking']);
+  navigateToAddBooking(resort) {
+    this.router.navigate(['/customer/add/booking'], resort);
   }
 }
