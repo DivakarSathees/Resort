@@ -2,8 +2,12 @@
     <div class="sub-container">
         <button class="back-btn" (click)="goBack()">Back</button>
 
-        <h1>Create New Venue</h1>
-
+        <ng-container *ngIf="isEditMode; else addVenueForm">
+            <h1>Edit Venue</h1>
+        </ng-container>
+        <ng-template #addVenueForm>
+            <h1>Create New Venue</h1>
+        </ng-template>
         <form [formGroup]="venueForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label for="venueName">Venue Name:</label>
@@ -38,7 +42,7 @@
             </div>
 
             <div class="button-submit">
-                <button class="button-submit" type="submit">Create Venue</button>
+                <button class="button-submit" type="submit">{{ isEditMode ? 'Update Venue' : 'Create Venue' }}</button>
             </div>
             <div *ngIf="errorMessage" class="error-message">
                 *{{ errorMessage }}

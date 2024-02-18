@@ -4,6 +4,11 @@
     align-items: center;
     padding: 20px;
   }
+
+  
+#venueInfoBody.blur {
+  filter: blur(3px);
+}
   
   .top-head {
     display: flex;
@@ -59,11 +64,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    padding: 20px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+    padding: 60px;
+    border-radius: 5px;
+    text-align: center;
+    z-index: 2;
+    color: black;
+    border: 2px solid black;
   }
   
   .delete-popup p {
@@ -73,6 +80,9 @@
   #delete-btn {
     background-color: #e74c3c;
     color: #fff;
+    border-radius:4px;
+    margin-right:20px;
+    padding:10px;
   }
   
   #delete-btn:hover {
@@ -82,6 +92,8 @@
   .cancel-btn {
     background-color: #3498db;
     color: #fff;
+    padding:10px;
+
   }
   
   .cancel-btn:hover {

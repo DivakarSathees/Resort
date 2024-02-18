@@ -35,7 +35,7 @@ export class AddVenueComponent implements OnInit {
           venueImage: venue.VenueImageURL,
           venueDescription: venue.VenueDescription,
           venueLocation: venue.VenueLocation,
-          venueId: venue.id
+          venueId: venue.VenueId
         });
       },
       (error) => {
@@ -62,22 +62,22 @@ export class AddVenueComponent implements OnInit {
 
   onSubmit(): void {
     if (this.venueForm.valid) {
-      const venue = {
-        VenueName: this.venueForm.get('venueName').value,
-        VenueImageURL: this.venueForm.get('venueImage').value,
-        VenueDescription: this.venueForm.get('venueDescription').value,
-        VenueLocation: this.venueForm.get('venueLocation').value,
-        // Add other properties if needed
-        VenueId: this.venueForm.get('venueId').value
-      };
-console.log(venue)
 if (this.isEditMode) {
   // Handle updating an existing venue
+  const venue = {
+    VenueName: this.venueForm.get('venueName').value,
+    VenueImageURL: this.venueForm.get('venueImage').value,
+    VenueDescription: this.venueForm.get('venueDescription').value,
+    VenueLocation: this.venueForm.get('venueLocation').value,
+    // Add other properties if needed
+    VenueId: this.venueForm.get('venueId').value
+  };
+console.log(venue)
   this.venueService.updateVenue(venue).subscribe(
     (response) => {
       // Handle success if needed
       console.log('Venue updated successfully', response);
-      this.venueForm.reset(); // Reset the form
+      this.router.navigate(['/admin/venue/dashboard']);
       // Navigate to the desired route after successful addition
     },
     (error) => {
@@ -85,12 +85,21 @@ if (this.isEditMode) {
       console.error('Error updating venue', error);
     }  );
 } else {
+  const venue = {
+    VenueName: this.venueForm.get('venueName').value,
+    VenueImageURL: this.venueForm.get('venueImage').value,
+    VenueDescription: this.venueForm.get('venueDescription').value,
+    VenueLocation: this.venueForm.get('venueLocation').value,
+    // Add other properties if needed
+  };
+console.log(venue)
       // Assuming your service method is named addVenue
       this.venueService.addVenue(venue).subscribe(
         (response) => {
           // Handle success if needed
           console.log('Venue added successfully', response);
           this.venueForm.reset(); // Reset the form
+          this.router.navigate(['/admin/venue/dashboard']);
           // Navigate to the desired route after successful addition
         },
         (error) => {
