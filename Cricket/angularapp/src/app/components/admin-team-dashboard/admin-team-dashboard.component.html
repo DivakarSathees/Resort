@@ -8,9 +8,9 @@
         <div *ngIf="teams.length > 0; else noRecords">
             <div class="team-item" *ngFor="let team of teams">
                 <div class="team-details">
-                    <img [src]="team.teamImageURL" alt="Team Image" class="team-image" />
-                    <h2>{{ team.teamName }}</h2>
-                    <p>{{ team.teamDescription }}</p>
+                    <img [src]="team.TeamImageURL" alt="Team Image" class="team-image" />
+                    <h2>{{ team.TeamName }}</h2>
+                    <p>{{ team.TeamDescription }}</p>
                 </div>
                 <div class="team-actions">
                     <button class="delete-btn-grad btn-danger" (click)="showDeletePopup = true; selectedTeam = team;">

@@ -1,3 +1,4 @@
+
 // team.component.ts
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -31,11 +32,16 @@ export class AddTeamComponent implements OnInit {
       (team) => {
         // Prefill the form with team data
         this.teamForm.patchValue({
-          teamName: team.TeamName,
-          teamImage: team.TeamImageURL,
-          teamDescription: team.TeamDescription,
-          teamId: team.TeamId
+          TeamName: team.TeamName,
+          TeamImageURL: team.TeamImageURL,
+          TeamDescription: team.TeamDescription,
+          TeamId: team.TeamId
         });
+
+        // If Players are available, you may handle them accordingly
+        // if (team.Players) {
+        //   // Handle player data if needed
+        // }
       },
       (error) => {
         console.error('Error fetching team data', error);
@@ -45,10 +51,10 @@ export class AddTeamComponent implements OnInit {
 
   initializeForm(): void {
     this.teamForm = this.fb.group({
-      teamName: ['', Validators.required],
-      teamImage: ['', Validators.required],
-      teamDescription: ['', Validators.required],
-      teamId: ['']
+      TeamName: ['', Validators.required],
+      TeamImageURL: ['', Validators.required],
+      TeamDescription: ['', Validators.required],
+      TeamId: ['']
     });
   }
 
@@ -62,10 +68,10 @@ export class AddTeamComponent implements OnInit {
       if (this.isEditMode) {
         // Handle updating an existing team
         const team = {
-          TeamName: this.teamForm.get('teamName').value,
-          TeamImageURL: this.teamForm.get('teamImage').value,
-          TeamDescription: this.teamForm.get('teamDescription').value,
-          TeamId: this.teamForm.get('teamId').value
+          TeamName: this.teamForm.get('TeamName').value,
+          TeamImageURL: this.teamForm.get('TeamImageURL').value,
+          TeamDescription: this.teamForm.get('TeamDescription').value,
+          TeamId: this.teamForm.get('TeamId').value
         };
 
         this.teamService.updateTeam(team).subscribe(
@@ -80,9 +86,9 @@ export class AddTeamComponent implements OnInit {
       } else {
         // Handle creating a new team
         const team = {
-          TeamName: this.teamForm.get('teamName').value,
-          TeamImageURL: this.teamForm.get('teamImage').value,
-          TeamDescription: this.teamForm.get('teamDescription').value
+          TeamName: this.teamForm.get('TeamName').value,
+          TeamImageURL: this.teamForm.get('TeamImageURL').value,
+          TeamDescription: this.teamForm.get('TeamDescription').value
         };
 
         this.teamService.addTeam(team).subscribe(
@@ -96,8 +102,7 @@ export class AddTeamComponent implements OnInit {
           }
         );
       }
-    }
-     else {
+    } else {
       this.errorMessage = 'Please fill out all required fields.';
     }
   }

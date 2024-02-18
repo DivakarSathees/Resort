@@ -9,30 +9,35 @@
         <ng-template #addTeamForm>
             <h1>Create New Team</h1>
         </ng-template>
+
         <form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
-                <label for="teamName">Team Name:</label>
-                <input type="text" id="teamName" formControlName="teamName">
-                <div *ngIf="teamForm.get('teamName').hasError('required') && teamForm.get('teamName').touched" class="error-message">
+                <label for="TeamName">Team Name:</label>
+                <input type="text" id="TeamName" formControlName="TeamName">
+                <div *ngIf="teamForm.get('TeamName').hasError('required') && teamForm.get('TeamName').touched" class="error-message">
                     *Team Name is required.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="teamImage">Team Image:</label>
-                <input type="text" id="teamImage" formControlName="teamImage">
-                <div *ngIf="teamForm.get('teamImage').hasError('required') && teamForm.get('teamImage').touched" class="error-message">
-                    *Team Image is required.
+                <label for="TeamImageURL">Team Image URL:</label>
+                <input type="text" id="TeamImageURL" formControlName="TeamImageURL">
+                <div *ngIf="teamForm.get('TeamImageURL').hasError('required') && teamForm.get('TeamImageURL').touched" class="error-message">
+                    *Team Image URL is required.
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="teamDescription">Team Description:</label>
-                <textarea id="teamDescription" formControlName="teamDescription"></textarea>
-                <div *ngIf="teamForm.get('teamDescription').hasError('required') && teamForm.get('teamDescription').touched" class="error-message">
+                <label for="TeamDescription">Team Description:</label>
+                <textarea id="TeamDescription" formControlName="TeamDescription"></textarea>
+                <div *ngIf="teamForm.get('TeamDescription').hasError('required') && teamForm.get('TeamDescription').touched" class="error-message">
                     *Team Description is required.
                 </div>
             </div>
+
+            <!-- Add section for handling Players if needed -->
+            <!-- For example, displaying a list of players -->
+          
 
             <div class="button-submit">
                 <button class="button-submit" type="submit">{{ isEditMode ? 'Update Team' : 'Create Team' }}</button>
