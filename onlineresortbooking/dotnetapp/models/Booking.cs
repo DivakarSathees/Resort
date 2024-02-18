@@ -25,7 +25,7 @@ namespace dotnetapp.Models
  
         // Foreign key for the Many-to-One relationship with User
         public long? UserId { get; set; } // Nullable foreign key
-    [JsonIgnore]
+   // [JsonIgnore]
  
         [ForeignKey(nameof(UserId))]
         public virtual User? User { get; set; } // Nullable navigation property
