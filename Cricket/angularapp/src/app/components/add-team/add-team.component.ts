@@ -96,7 +96,8 @@ export class AddTeamComponent implements OnInit {
           }
         );
       }
-    } else {
+    }
+     else {
       this.errorMessage = 'Please fill out all required fields.';
     }
   }

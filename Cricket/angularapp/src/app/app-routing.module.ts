@@ -22,8 +22,8 @@ const routes: Routes = [
   { path: 'admin/add/referee', component: AddRefereeComponent },
   { path: 'admin/edit/referee/:id', component: AddRefereeComponent },
   { path: 'admin/team/dashboard', component: AdminTeamDashboardComponent },
-  { path: 'admin/add/teamteam', component: AddTeamComponent },
-  { path: 'admin/edit/referee/:id', component: AddTeamComponent },
+  { path: 'admin/add/team', component: AddTeamComponent },
+  { path: 'admin/edit/team/:id', component: AddTeamComponent },
   { path: 'error', component: ErrorComponent, data: { message: 'Oops! Something went wrong.' }},
   { path: '**', redirectTo: '/error', pathMatch: 'full' },
 ];

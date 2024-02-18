@@ -1,0 +1,45 @@
+<!-- team.component.html -->
+<div class="main-container">
+    <div class="sub-container">
+        <button class="back-btn" (click)="goBack()">Back</button>
+
+        <ng-container *ngIf="isEditMode; else addTeamForm">
+            <h1>Edit Team</h1>
+        </ng-container>
+        <ng-template #addTeamForm>
+            <h1>Create New Team</h1>
+        </ng-template>
+        <form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="teamName">Team Name:</label>
+                <input type="text" id="teamName" formControlName="teamName">
+                <div *ngIf="teamForm.get('teamName').hasError('required') && teamForm.get('teamName').touched" class="error-message">
+                    *Team Name is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="teamImage">Team Image:</label>
+                <input type="text" id="teamImage" formControlName="teamImage">
+                <div *ngIf="teamForm.get('teamImage').hasError('required') && teamForm.get('teamImage').touched" class="error-message">
+                    *Team Image is required.
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="teamDescription">Team Description:</label>
+                <textarea id="teamDescription" formControlName="teamDescription"></textarea>
+                <div *ngIf="teamForm.get('teamDescription').hasError('required') && teamForm.get('teamDescription').touched" class="error-message">
+                    *Team Description is required.
+                </div>
+            </div>
+
+            <div class="button-submit">
+                <button class="button-submit" type="submit">{{ isEditMode ? 'Update Team' : 'Create Team' }}</button>
+            </div>
+            <div *ngIf="errorMessage" class="error-message">
+                *{{ errorMessage }}
+            </div>
+        </form>
+    </div>
+</div>
