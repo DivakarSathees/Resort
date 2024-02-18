@@ -35,6 +35,7 @@ builder.Services.AddScoped<RefereeService>();
 builder.Services.AddScoped<ScheduleService>();
 builder.Services.AddScoped<TeamService>();
 builder.Services.AddScoped<VenueService>();
+builder.Services.AddScoped<ReviewService>();
 
 builder.Services.AddAuthentication(options =>
 {

@@ -20,12 +20,14 @@
                 </div>
             </div>
         </div>
+        <ng-template #noRecords>
+            <div id="no-records">
+                <img src="https://cdni.iconscout.com/illustration/premium/thumb/no-data-found-8867280-7265556.png?f=webp" alt="No Records Found" />
+                <h1>No records found</h1>
+            </div>
+            
+        </ng-template>
     </div>
-    <ng-template #noRecords>
-    <div id="no-records">
-        <h1>No records found</h1>
-    </div>
-</ng-template>
 </div>
 
 <div *ngIf="showDeletePopup" class="delete-popup">
