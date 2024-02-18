@@ -18,7 +18,6 @@ namespace dotnetapp.Controllers
         {
             _reviewService = reviewService;
         }
-        [Authorize]
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Review>>> GetAllReviews()
@@ -26,22 +25,9 @@ namespace dotnetapp.Controllers
             var reviews = await _reviewService.GetAllReviews();
             return Ok(reviews);
         }
-        [Authorize]
 
 
-        [HttpGet("{reviewId}")]
-        public async Task<ActionResult<Review>> GetReviewById(long reviewId)
-        {
-            var review = await _reviewService.GetReviewById(reviewId);
-
-            if (review == null)
-            {
-                return NotFound(new { message = "Cannot find any review" });
-            }
-
-            return Ok(review);
-        }
-        [Authorize(Roles = "Customer")]
+      
 
         [HttpPost]
         public async Task<ActionResult> AddReview([FromBody] Review review)
