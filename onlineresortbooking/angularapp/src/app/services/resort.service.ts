@@ -19,7 +19,7 @@ export class ResortService {
       'Authorization': `Bearer ${token}` // Assuming your token is a bearer token, replace it accordingly
     });
 
-    return this.http.post(`${this.apiUrl}/api/Resort`, resort, { headers });
+    return this.http.post(`${this.apiUrl}/api/resort`, resort, { headers });
   }
 
   getAllResorts() {

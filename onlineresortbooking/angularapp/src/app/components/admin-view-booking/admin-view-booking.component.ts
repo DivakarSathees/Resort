@@ -22,6 +22,7 @@ export class AdminViewBookingComponent implements OnInit {
   getAllBookings() {
     this.bookingService.getAllBookings().subscribe((response: any) => {
       this.resorts = response;
+      console.log(this.resorts);
     });
   }
 
