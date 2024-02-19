@@ -64,3 +64,11 @@ button:hover {
 .rating-option input {
   margin-bottom: 5px;
 }
+
+.validation{
+  display: flex;
+}
+
+label{
+  color: black !important;
+}

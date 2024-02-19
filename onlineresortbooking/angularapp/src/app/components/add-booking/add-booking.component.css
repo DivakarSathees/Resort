@@ -133,3 +133,11 @@ button:hover {
   display:flex;
 }
 /* Add more styling as needed */
+
+.validation{
+  display: flex;
+}
+
+label{
+  color: black !important;
+}
