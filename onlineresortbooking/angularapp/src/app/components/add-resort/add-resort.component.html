@@ -4,11 +4,12 @@
     <div class="form-group">
         <div class="validation">
             <label for="resortName">Resort Name:</label>
-        <div *ngIf="addResortForm.get('resortName').hasError('required') && addResortForm.get('resortName').touched" class="error-message">
-            *
+            <div *ngIf="addResortForm.get('resortName').hasError('required') && addResortForm.get('resortName').touched"
+                class="error-message">
+                *
+            </div>
         </div>
-        </div>
-        
+
         <input type="text" id="resortName" formControlName="resortName">
         <!-- <div *ngIf="addResortForm.get('resortName').hasError('required') && addResortForm.get('resortName').touched" class="error-message">
             *Resort name is required.
@@ -16,14 +17,21 @@
     </div>
 
     <div class="form-group">
-        <label for="resortImageUrl">Resort Image:</label>
-        <input type="file" id="resortImageUrl" formControlName="resortImageUrl" (change)="handleFileChange($event)" accept=".png, .jpg">
-        <div *ngIf="addResortForm.get('resortImageUrl').hasError('required') && addResortForm.get('resortImageUrl').touched" class="error-message">
-            *Resort Image is required.
+        <div class="validation">
+            <label for="resortImageUrl">Resort Image:</label>
+            <div *ngIf="addResortForm.get('resortImageUrl').hasError('required') && addResortForm.get('resortImageUrl').touched"
+                class="error-message">
+                *
+            </div>
         </div>
+        <input type="file" id="resortImageUrl" formControlName="resortImageUrl" (change)="handleFileChange($event)"
+            accept=".png, .jpg">
+        <!-- <div *ngIf="addResortForm.get('resortImageUrl').hasError('required') && addResortForm.get('resortImageUrl').touched" class="error-message">
+            *Resort Image is required.
+        </div> -->
     </div>
 
-    <div class="form-group">
+    <!-- <div class="form-group">
         <label for="resortLocation">Resort Location:</label>
         <textarea id="resortLocation" formControlName="resortLocation"></textarea>
         <div *ngIf="addResortForm.get('resortLocation').hasError('required') && addResortForm.get('resortLocation').touched" class="error-message">
@@ -72,6 +80,73 @@
         <div *ngIf="addResortForm.get('capacity').hasError('min') && addResortForm.get('capacity').touched" class="error-message">
             *Capacity must be greater than 0.
         </div>
+    </div> -->
+
+    <div class="form-group">
+        <div class="validation">
+            <label for="resortLocation">Resort Location:</label>
+            <div *ngIf="addResortForm.get('resortLocation').hasError('required') && addResortForm.get('resortLocation').touched"
+                class="error-message">
+                *
+            </div>
+        </div> <textarea id="resortLocation" formControlName="resortLocation"></textarea>
+
+    </div>
+
+    <div class="form-group">
+        <div class="validation">
+            <label for="description">Resort Description:</label>
+            <div *ngIf="addResortForm.get('description').hasError('required') && addResortForm.get('description').touched"
+                class="error-message">
+                *
+            </div>
+        </div> <textarea id="description" formControlName="description"></textarea>
+
+    </div>
+
+    <div class="form-group">
+        <div class="validation">
+            <label for="resortAvailableStatus">Resort Available Status:</label>
+
+            <div *ngIf="addResortForm.get('resortAvailableStatus').hasError('required') && addResortForm.get('resortAvailableStatus').touched"
+                class="error-message">
+                *
+            </div>
+        </div> <select id="resortAvailableStatus" formControlName="resortAvailableStatus">
+            <option value="" disabled selected>Select availability</option>
+            <option value="Available">Available</option>
+            <option value="Unavailable">Unavailable</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <div class="validation">
+            <label for="price">Price:</label>
+            <div *ngIf="addResortForm.get('price').hasError('required') && addResortForm.get('price').touched"
+                class="error-message">
+                *
+            </div>
+            <div *ngIf="addResortForm.get('price').hasError('min') && addResortForm.get('price').touched"
+                class="error-message">
+                *
+            </div>
+        </div> <input type="number" id="price" formControlName="price">
+
+    </div>
+
+    <div class="form-group">
+        <div class="validation">
+            <label for="capacity">Capacity:</label>
+            <div *ngIf="addResortForm.get('capacity').hasError('required') && addResortForm.get('capacity').touched"
+                class="error-message">
+                *
+            </div>
+            <div *ngIf="addResortForm.get('capacity').hasError('min') && addResortForm.get('capacity').touched"
+                class="error-message">
+                *
+            </div>
+        </div> <input type="number" id="capacity" formControlName="capacity">
+
     </div>
 
     <div *ngIf="errorMessage" class="error-message">
