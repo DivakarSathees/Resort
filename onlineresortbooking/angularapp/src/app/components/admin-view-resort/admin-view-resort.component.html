@@ -6,7 +6,7 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Resort Id</th>
+            <th>S.No</th>
             <th>Resort Name</th>
             <th>Resort Description</th>
             <th>Resort Image</th>
@@ -18,8 +18,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let resort of resorts">
-            <td>{{ resort.resortId }}</td>
+          <tr *ngFor="let resort of resorts; let i=index">
+            <td>{{ i+1 }}</td>
             <td>
               <span *ngIf="!isEditing || resort !== selectedResort">{{
                 resort.resortName
