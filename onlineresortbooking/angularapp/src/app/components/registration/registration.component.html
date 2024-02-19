@@ -17,17 +17,20 @@
         <div *ngIf="emailNgModel.invalid && (emailNgModel.dirty || emailNgModel.touched)" class="error-message">
           <div *ngIf="emailNgModel.errors.required">*</div>
         </div>
-        </div><input type="email" id="email" [(ngModel)]="email" name="email" [ngModelOptions]="{standalone: true}" required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
-        #emailNgModel="ngModel">
-<div *ngIf="emailNgModel.errors.pattern">*Please enter a valid email</div>
+      </div><input type="email" id="email" [(ngModel)]="email" name="email" [ngModelOptions]="{standalone: true}"
+        required pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" #emailNgModel="ngModel">
+      <div *ngIf="emailNgModel.errors.pattern" class="error-message">*Please enter a valid email</div>
 
 
-
-      <label for="password">Password:</label>
+      <div class="validation">
+        <label for="password">Password:</label>
+        <div *ngIf="passwordNgModel.invalid && (passwordNgModel.dirty || passwordNgModel.touched)"
+          class="error-message">
+          *</div>
+      </div>
       <input type="password" id="password" [(ngModel)]="password" name="password" [ngModelOptions]="{standalone: true}"
         required #passwordNgModel="ngModel">
-      <div *ngIf="passwordNgModel.invalid && (passwordNgModel.dirty || passwordNgModel.touched)" class="error-message">
-        *Password is required</div>
+
       <div *ngIf="passwordNgModel.valid && !isPasswordComplex(password)" class="error-message">
         *Password must include at least one uppercase letter, one lowercase letter, one digit, and one special character
       </div>
