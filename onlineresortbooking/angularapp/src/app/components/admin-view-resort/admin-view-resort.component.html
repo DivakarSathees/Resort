@@ -39,7 +39,7 @@
               ></textarea>
             </td>
             <td>
-              <img *ngIf="!isEditing || resort !== selectedResort" [src]="addResortForm.get('resortImageUrl').value" alt="Resort Image" class="resort-image" />
+              <img *ngIf="!isEditing || resort !== selectedResort" [src]="resort.resortImageUrl" alt="Resort Image" class="resort-image" />
               <input *ngIf="isEditing && resort === selectedResort" type="file" id="resortImageUrl" formControlName="resortImageUrl" (change)="handleFileChange($event)" accept=".png, .jpg">
           </td>
             <td>
