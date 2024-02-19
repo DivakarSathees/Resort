@@ -2,18 +2,24 @@
     <h1>Login</h1>
   
     <form (ngSubmit)="login()" #loginForm="ngForm" novalidate>
-      <label for="email">Email:</label>
-      <input type="text" id="email" [(ngModel)]="email" name="email" [ngModelOptions]="{standalone: true}" required
-             #emailNgModel="ngModel">
+     <div class="validation">
+          <label for="email">Email:</label>
+     
       <div *ngIf="emailNgModel.invalid && (emailNgModel.dirty || emailNgModel.touched)"
-           class="error-message">*Email is required</div>
-  
-      <label for="password">Password:</label>
-      <input type="password" id="password" [(ngModel)]="password" name="password" [ngModelOptions]="{standalone: true}" required
-             #passwordNgModel="ngModel">
+           class="error-message">*</div>
+           
+     </div><input type="text" id="email" [(ngModel)]="email" name="email" [ngModelOptions]="{standalone: true}" required
+     #emailNgModel="ngModel">
+      
+     <div class="validation">
+          <label for="password">Password:</label>
+      
       <div *ngIf="passwordNgModel.invalid && (passwordNgModel.dirty || passwordNgModel.touched || loginForm.submitted)"
-           class="error-message">*Password is required</div>
-  
+           class="error-message">*</div>
+     </div>
+      
+           <input type="password" id="password" [(ngModel)]="password" name="password" [ngModelOptions]="{standalone: true}" required
+           #passwordNgModel="ngModel">
       <div *ngIf="error" class="error-message">{{ error }}</div>
   
       <button type="submit" [disabled]="loginForm.invalid">Login</button>

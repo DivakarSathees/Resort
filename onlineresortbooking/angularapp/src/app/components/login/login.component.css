@@ -59,4 +59,10 @@
   .register-link a:hover {
     text-decoration: underline;
   }
+  .validation{
+    display: flex;
+  }
   
+  label{
+    color: black !important;
+  }
