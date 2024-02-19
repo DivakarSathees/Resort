@@ -35,32 +35,40 @@
         *Password must include at least one uppercase letter, one lowercase letter, one digit, and one special character
       </div>
 
-      <label for="confirmPassword">Confirm Password:</label>
+      <div class="validation">
+        <label for="confirmPassword">Confirm Password:</label>
+
+        <div *ngIf="confirmPasswordNgModel.invalid && (confirmPasswordNgModel.dirty || confirmPasswordNgModel.touched)"
+          class="error-message">*</div>
+      </div>
       <input type="password" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword"
         [ngModelOptions]="{standalone: true}" required #confirmPasswordNgModel="ngModel">
-      <div *ngIf="confirmPasswordNgModel.invalid && (confirmPasswordNgModel.dirty || confirmPasswordNgModel.touched)"
-        class="error-message">*Confirm Password is required</div>
       <div *ngIf="password !== confirmPassword && !passwordMismatch" class="error-message">
         *Passwords do not match
       </div>
 
-      <label for="mobile">Mobile Number:</label>
-      <input type="tel" id="mobile" [(ngModel)]="mobileNumber" name="mobile" [ngModelOptions]="{standalone: true}"
+      <div class="validation">
+        <label for="mobile">Mobile Number:</label>
+        <div *ngIf="mobileNgModel.invalid && (mobileNgModel.dirty || mobileNgModel.touched)" class="error-message">
+          <div *ngIf="mobileNgModel.errors.required">*</div>
+        </div>
+      </div><input type="tel" id="mobile" [(ngModel)]="mobileNumber" name="mobile" [ngModelOptions]="{standalone: true}"
         required pattern="^[0-9]{10}$" #mobileNgModel="ngModel">
-      <div *ngIf="mobileNgModel.invalid && (mobileNgModel.dirty || mobileNgModel.touched)" class="error-message">
-        <div *ngIf="mobileNgModel.errors.required">*Mobile number is required</div>
-        <div *ngIf="mobileNgModel.errors.pattern">*Mobile number must be 10 digits</div>
+
+      <div *ngIf="mobileNgModel.errors.pattern" class="error-message">*Mobile number must be 10 digits</div>
+
+
+      <div class="validation"> <label for="userRole">Role:</label>
+        <div *ngIf="userRoleNgModel.invalid && (userRoleNgModel.dirty || userRoleNgModel.touched)"
+          class="error-message">
+          *</div>
       </div>
-
-
-      <label for="userRole">Role:</label>
       <select id="userRole" [(ngModel)]="userRole" name="userRole" required #userRoleNgModel="ngModel">
         <option value="" disabled>Select a role</option>
         <option value="Admin">ADMIN</option>
         <option value="Customer">CUSTOMER</option>
       </select>
-      <div *ngIf="userRoleNgModel.invalid && (userRoleNgModel.dirty || userRoleNgModel.touched)" class="error-message">
-        *Role is required</div>
+
 
       <div *ngIf="passwordMismatch" class="error-message">*Passwords do not match</div>
 
