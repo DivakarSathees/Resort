@@ -14,6 +14,7 @@ export class AdminViewResortComponent implements OnInit {
   selectedItem: any = {};
   isEditing = false;
   resorts: any[] = [];
+  photoImage = '';
 
   constructor(private router: Router, private resortService: ResortService) { }
 
@@ -25,6 +26,7 @@ export class AdminViewResortComponent implements OnInit {
     this.resortService.getAllResorts().subscribe(
       (data: any) => {
         this.resorts = data;
+        console.log(this.resorts)
       },
       (err) => {
         console.log(err);
@@ -72,5 +74,37 @@ export class AdminViewResortComponent implements OnInit {
   cancelEdit() {
     this.isEditing = false;
     this.selectedResort = null;
+  }
+
+  handleFileChange(event: any): void {
+    const file = event.target.files[0];
+
+    if (file) {
+      this.convertFileToBase64(file).then(
+        (base64String) => {
+          this.photoImage=base64String
+        },
+        (error) => {
+          console.error('Error converting file to base64:', error);
+          // Handle error appropriately
+        }
+      );
+    }
+  }
+
+  convertFileToBase64(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        resolve(reader.result as string);
+      };
+
+      reader.onerror = (error) => {
+        reject(error);
+      };
+
+      reader.readAsDataURL(file);
+    });
   }
 }

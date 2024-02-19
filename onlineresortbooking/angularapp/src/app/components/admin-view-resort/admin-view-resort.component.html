@@ -39,17 +39,9 @@
               ></textarea>
             </td>
             <td>
-              <img
-                *ngIf="!isEditing || resort !== selectedResort"
-                [src]="resort.resortImageUrl"
-                alt="Resort Image"
-                class="resort-image"
-              />
-              <textarea
-                *ngIf="isEditing && resort === selectedResort"
-                [(ngModel)]="resort.resortImageUrl"
-              ></textarea>
-            </td>
+              <img *ngIf="!isEditing || resort !== selectedResort" [src]="addResortForm.get('resortImageUrl').value" alt="Resort Image" class="resort-image" />
+              <input *ngIf="isEditing && resort === selectedResort" type="file" id="resortImageUrl" formControlName="resortImageUrl" (change)="handleFileChange($event)" accept=".png, .jpg">
+          </td>
             <td>
               <span *ngIf="!isEditing || resort !== selectedResort">{{
                 resort.resortAvailableStatus
