@@ -40,7 +40,7 @@
             </td>
             <td>
               <img *ngIf="!isEditing || resort !== selectedResort" [src]="resort.resortImageUrl" alt="Resort Image" class="resort-image" />
-              <input *ngIf="isEditing && resort === selectedResort" type="file" id="resortImageUrl" formControlName="resortImageUrl" (change)="handleFileChange($event)" accept=".png, .jpg">
+              <input *ngIf="isEditing && resort === selectedResort" type="file" id="resortImageUrl" (change)="handleFileChange($event)" accept=".png, .jpg">
           </td>
             <td>
               <span *ngIf="!isEditing || resort !== selectedResort">{{

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Resort } from 'src/app/models/resort.model';
 import { ResortService } from 'src/app/services/resort.service';
@@ -15,8 +16,13 @@ export class AdminViewResortComponent implements OnInit {
   isEditing = false;
   resorts: any[] = [];
   photoImage = '';
-
-  constructor(private router: Router, private resortService: ResortService) { }
+  addResortForm: FormGroup; 
+  constructor(private fb: FormBuilder, private router: Router, private resortService: ResortService) {
+    this.addResortForm = this.fb.group({
+      resortImageUrl: ['', Validators.required], // Add other form controls as needed
+      // ... other form controls
+    });
+   }
 
   ngOnInit(): void {
     this.getAllResorts();
@@ -58,6 +64,10 @@ export class AdminViewResortComponent implements OnInit {
 }
 
   updateResort(resortDetails: any) {
+    if (this.photoImage) {
+      // If a new image is selected, update the resort's image URL
+      resortDetails.resortImageUrl = this.photoImage;
+    }
     // Implement your update logic here, using the resortService.put() method
     this.resortService.updateResort(resortDetails).subscribe(
       (data: any) => {
