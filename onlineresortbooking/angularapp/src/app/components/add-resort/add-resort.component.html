@@ -2,10 +2,13 @@
 
 <form [formGroup]="addResortForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
-        <label for="resortName">Resort Name:</label>
+        <div class="validation">
+            <label for="resortName">Resort Name:</label>
         <div *ngIf="addResortForm.get('resortName').hasError('required') && addResortForm.get('resortName').touched" class="error-message">
             *
         </div>
+        </div>
+        
         <input type="text" id="resortName" formControlName="resortName">
         <!-- <div *ngIf="addResortForm.get('resortName').hasError('required') && addResortForm.get('resortName').touched" class="error-message">
             *Resort name is required.

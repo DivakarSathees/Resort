@@ -35,11 +35,15 @@
     
         <div class="form-group">
             <label for="noOfPersons">Number of persons:</label>
-            <input type="number" id="noOfPersons" formControlName="noOfPersons">
+            <input type="number" id="noOfPersons" formControlName="noOfPersons" [max]="resort?.capacity">
             <div *ngIf="addBookingForm.get('noOfPersons').hasError('required') && addBookingForm.get('noOfPersons').touched"
                  class="error-message">
                 *Number of persons is required.
             </div>
+            <div *ngIf="addBookingForm.get('noOfPersons').hasError('max') && addBookingForm.get('noOfPersons').touched"
+         class="error-message">
+        *Number of persons cannot exceed the resort capacity.
+    </div>
         </div>
     
         <div class="form-group">
@@ -72,7 +76,8 @@
         <div class="add-btn">
             <button type="submit" (click)="confirmPayment = true">Make Payment</button>
         </div>
-    
+        <button (click)="navigateToDashboard()">Cancel</button>
+
     </form>
 </div>
 <div *ngIf="confirmPayment" class="confirmation-popup">

@@ -64,3 +64,10 @@ h1{
   color: #000;
 }
 
+.validation{
+  display: flex;
+}
+
+label{
+  color: black !important;
+}

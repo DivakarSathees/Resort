@@ -18,7 +18,7 @@
         <tbody>
             <tr *ngFor="let review of reviews; let i = index">
             <td>{{ i+1 }}</td>
-            <td>{{ review.userId }}</td>
+            <td>{{ review.user.username }}</td>
             <td>{{ review.subject }}</td>
             <td>{{ review.body }}</td>
             <td>{{ review.rating }}</td>
