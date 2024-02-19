@@ -45,12 +45,12 @@ export class AuthGuard implements CanActivate {
   }
 
   private isAdminRoute(url: string): boolean {
-    const adminRoutes = ['admin/dashboard', 'admin/add/boat', 'admin/view/boat', 'admin/view/bookings'];
+    const adminRoutes = [ 'admin/add/resort', 'admin/view/resort', 'admin/view/bookings', 'admin/view/review'];
     return adminRoutes.some(route => url.includes(route));
   }
 
   private isCustomerRoute(url: string): boolean {
-    const customerRoutes = ['customer/dashboard', 'customer/view/boat', 'customer/add/booking', 'customer/view/bookings'];
+    const customerRoutes = [ 'customer/view/resort', 'customer/add/booking/:id', 'customer/view/bookings', 'customer/add/review', 'customer/view/review'];
     return customerRoutes.some(route => url.includes(route));
   }
 
