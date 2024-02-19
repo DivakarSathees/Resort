@@ -3,10 +3,13 @@
 <form [formGroup]="addResortForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
         <label for="resortName">Resort Name:</label>
-        <input type="text" id="resortName" formControlName="resortName">
         <div *ngIf="addResortForm.get('resortName').hasError('required') && addResortForm.get('resortName').touched" class="error-message">
-            *Resort name is required.
+            *
         </div>
+        <input type="text" id="resortName" formControlName="resortName">
+        <!-- <div *ngIf="addResortForm.get('resortName').hasError('required') && addResortForm.get('resortName').touched" class="error-message">
+            *Resort name is required.
+        </div> -->
     </div>
 
     <div class="form-group">
